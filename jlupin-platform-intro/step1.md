@@ -9,6 +9,7 @@
 `sudo unzip jlupin.zip -d /opt/jlupin`{{execute}}
 `sudo chmod 750 /opt/jlupin/platform/start/start.sh`{{execute}}
 `sudo chmod 750 /opt/jlupin/platform/start/control.sh`{{execute}}
+`echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf`{{execute}}
 `sudo /opt/jlupin/platform/start/start.sh`{{execute}}
 `curl localhost:8000/exchange`{{execute}}
 
