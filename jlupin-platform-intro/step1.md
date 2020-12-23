@@ -1,6 +1,5 @@
 # JLupin Platform Tutorial
 
-
 ## JLupin installation
 
 - Update the registry
@@ -25,8 +24,16 @@
 - Enable nginx as root
 `echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf`{{execute}}
 
+## Starting JLuping with example application
+
 - Start the JLupin Platform
 `/opt/jlupin/platform/start/start.sh`{{execute}}
 
-## View the application
-https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/
+- View the logs
+`less /home/vagrant/jlupin/platform/logs/server/main/start/server.out`
+
+After a couple of minutes, you should see the information in logs, that everything deployed correctly and is up and running.
+
+## View the example application
+
+Check that the app is running by opening the following link in another tab: [click!](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/)
