@@ -1,0 +1,140 @@
+# Deploying own microservice - part 1 - Implementation
+
+For this example we are going to use Scala.
+
+## Prepating the project structure
+
+Go to home directory:
+`cd /root`{{execute}}
+
+Create the base directory for the example microservice:
+`mkdir hello-jlupin`{{execute}}
+
+Enter the directory:
+`cd hello-jlupin`{{execute}}
+
+Create proper project structure:
+`mkdir -p additional-files src/main/scala/com/example/configuration src/main/scala/com/example/service/impl src/main/scala/com/example/service/interfaces src/test`{{execute}}
+
+## Implementing the microservice
+
+### additional-files/configuration.yml
+
+This is the file containing jlupin configuration values:
+```
+SERVERS:
+  JLRMC: #JLupin Remote Method Calls Fast Protocol:
+    readTimeout: 480000
+    isWaitForFinishExecuteAllRequests: true
+    waitToShutdownThreadsOnStop: 60000
+    backlog: 256
+    receiveBufferSize: 256
+    isReuseAddress: false
+    threadPoolSize: 8
+    isLogPeriodicOnDebug: true
+    isDestroyThreadOnTimeout: false
+    threadExecutingTimeOut: 240000
+    isStartOnMainServerInitialize: true
+  TRANSMISSION:
+    readTimeout: 480000
+    isWaitForFinishExecuteAllRequests: false
+    waitToShutdownThreadsOnStop: 60000
+    backlog: 0
+    receiveBufferSize: 0
+    isReuseAddress: false
+    threadPoolSize: 2
+    isLogPeriodicOnDebug: true
+    isDestroyThreadOnTimeout: false
+    threadExecutingTimeOut: 3600000
+    isStartOnMainServerInitialize: true
+  QUEUE:
+    readTimeout: 480000
+    isWaitForFinishExecuteAllRequests: true
+    waitToShutdownThreadsOnStop: 60000
+    backlog: 256
+    receiveBufferSize: 256
+    isReuseAddress: false
+    threadPoolSize: 8
+    isLogPeriodicOnDebug: true
+    isDestroyThreadOnTimeout: false
+    threadExecutingTimeOut: 240000
+    isStartOnMainServerInitialize: true
+ENTRY_POINTS:
+  QUEUE:
+    threadAmount: 8
+    howOftenCheckingServerInMillis: 5000
+    repeatsAmount: 4
+    timeToWaitBetweenRepeatProbeInMillis: 1000
+TRANSMISSION:
+  MICROSERVICES_GRANT_ACCESS:
+    MICROSERVICES_LIST:
+    #- microserviceName: 'sampleMicroservice'
+    #  serviceName: 'sampleServiceName'
+    #  methodName: 'sampleMethodName'
+    #- microserviceName: 'sampleMicroservice2'
+    #  serviceName: 'sampleServiceName2'
+    #  methodName: 'sampleMethodName2'
+PROPERTIES:
+  platformVersion: '1.6.0.0'
+  #jvmOptions1: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml -agentlib:jdwp=transport=dt_socket,address=12998,server=y,suspend=n'
+  jvmOptions1: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml' #jvmOptions_2 - default the same as jvmOptions_1
+  #jvmOptions2: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml'
+  externalPort: '8000'
+  version: '1.0-SNAPSHOT'
+  switchDelayTime: 0
+  connectionSocketTimeoutInMillis: 1000
+  readTimeoutInMillis: 30000
+  isKeepAlive: false
+  isOOBInline: false
+  isTcpNoDelay: false
+  isReuseAddress: false
+  sendBufferSize: 0
+  receiveBufferSize: 0
+  soLinger: 0
+  trafficClass: 0
+  #javaExecutablePath: 'c:\\jvm\\bin\\java.exe'
+  #additionalClassPath: 'c:\\temp\\*'
+  isStartOnMainServerInitialize: true
+  priorityStartOnMainServerInitialize: 4
+  waitForProcessInitResponseTimeInMillis: 90000
+  waitForProcessStartResponseTimeInMillis: 90000
+  waitForProcessDestroyResponseTimeInMillis: 30000
+  isAllFilesToJVMAppClassLoader: false
+  isArchiveOnStart: false
+  startLogMode: INFO
+  isInitErrorCauseWithNetworkInformation: true
+  isJmxEnabled: true
+  jmxOptions: '-Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false'
+  jmxPrimaryPort: -1
+  jmxSecondaryPort: -1
+  checkAvailableScript: 'function isAvailable(checkResponseTimeInMillis, jrmcActiveThreads, jrmcMaxThreads,
+                                              queueActiveThreads, queueMaxThreads, servletActiveThreads, servletMaxThreads,
+                                              jvmMaxMemoryInBytes, jvmTotalMemoryInBytes, jvmFreeMemoryInBytes,
+                                              jvmProcessCpuLoadInPercentage, userAvailableFlag) {
+                           var isAvailableByUser = Boolean(userAvailableFlag);
+                           if(checkResponseTimeInMillis > 20000 || !isAvailableByUser) {
+                             return false;
+                           }
+                           return true;
+                         }'
+APPLICATION:
+  applicationContainerProducerClassName: 'com.example.configuration.ScalaHelloWorldJLupinConfiguration
+INITIALIZING_LOGGER:
+  #directoryPath: '/logs/server'
+  #fileName: 'file_name'
+  fileExtension: 'log'
+  fileSizeInMB: 20
+  maxFiles: 10
+MEMORY_ERRORS:
+  isRestartOnError: true
+  howManyTimes: 4
+  percentageGrowth: 15
+  isHeapDump: true
+THREAD_POOLS:
+#THREAD_POOL_1:
+#  size: 8
+#  waitingTimeForTasksCompletionInMillis: 10000
+#THREAD_POOL_2:
+#  size: 8
+#  waitingTimeForTasksCompletionInMillis: 10000
+```

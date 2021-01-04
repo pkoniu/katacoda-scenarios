@@ -12,6 +12,18 @@
       {
         "title": "Controlling the platform using CLI",
         "text": "step2.md"
+      },
+      {
+        "title": "Controlling the node using CLI",
+        "text": "step3.md"
+      },
+      {
+        "title": "Deploying own microservice - part 1 - Implementation",
+        "text": "step4.md"
+      },
+      {
+        "title": "Deploying own microservice - part 2 - Deployment",
+        "text": "step5.md"
       }
     ],
     "intro": {

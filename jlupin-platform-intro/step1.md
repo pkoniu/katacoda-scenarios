@@ -30,7 +30,7 @@
 `/opt/jlupin/platform/start/start.sh`{{execute}}
 
 - View the logs
-`less /home/vagrant/jlupin/platform/logs/server/main/start/server.out`
+`less /opt/jlupin/platform/logs/server/main/start/server.out`{{execute}}
 
 After a couple of minutes, you should see the information in logs, that everything deployed correctly and is up and running.
 
