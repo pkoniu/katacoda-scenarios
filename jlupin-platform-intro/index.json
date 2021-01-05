@@ -49,6 +49,6 @@
     "uilayout": "vscode-terminal-split"
   },
   "backend": {
-    "imageid": "ubuntu:2004"
+    "imageid": "openjdk:15"
   }
 }

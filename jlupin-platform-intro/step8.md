@@ -4,7 +4,7 @@
 
 Install maven:
 `apt update`{{execute}}
-`apt install maven`
+`apt install maven`{{execute}}
 
 Verify maven installation and `$JAVA_HOME` environment variable:
 `mvn -version`{{execute}}
