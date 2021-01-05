@@ -1,4 +1,4 @@
-# Implementation - project structure
+# Own microservice example - project structure
 
 For this example we are going to create a Scala project.
 

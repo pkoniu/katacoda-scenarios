@@ -1,8 +1,8 @@
-# Implementation - src
+# Own microservice example - source files
 
 ## src/main/scala/com/example/configuration/ScalaHelloWorldJLupinConfiguration.scala
 
-```scala
+```
 package com.example.configuration
 
 import com.jlupin.impl.container.application.spring.{JLupinAbstractSpringApplicationContainer}
@@ -21,7 +21,7 @@ class ScalaHelloWorldJLupinConfiguration extends JLupinAbstractApplicationContai
 
 ## src/main/scala/com/example/configuration/ScalaHelloWorldSpringConfiguration.scala
 
-```scala
+```
 package com.example.configuration
 
 import org.springframework.context.annotation.{Bean, ComponentScan, Configuration}
@@ -42,7 +42,7 @@ class ScalaHelloWorldSpringConfiguration {
 
 ## src/main/scala/com/example/service/interfaces/ExampleService.scala
 
-```scala
+```
 package com.example.service.interfaces
 
 trait ExampleService {
@@ -50,4 +50,16 @@ trait ExampleService {
 }
 ```
 
-## 
+## src/main/scala/com/example/service/impl/ExampleServiceImpl.scala
+
+```
+package com.example.service.impl
+
+import com.example.service.interfaces.ExampleService
+import org.springframework.stereotype.Service
+
+@Service(value = "exampleService")
+class ExampleServiceImpl extends ExampleService {
+  def hello(name : String) = "Hello, " + name + "!"
+}
+```

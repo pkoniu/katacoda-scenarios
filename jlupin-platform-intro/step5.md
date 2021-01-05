@@ -1,10 +1,10 @@
-# Implementation - additional-files
+# Own microservice example - additional-files
 
 ## additional-files/configuration.yml
 
 This is the file containing jlupin configuration values:
 
-```yml
+```
 SERVERS:
   JLRMC: #JLupin Remote Method Calls Fast Protocol:
     readTimeout: 480000
@@ -124,20 +124,8 @@ THREAD_POOLS:
 
 ## additional-files/log4j2.xml
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- ===================================================================== -->
-<!--                                                                       -->
-<!--  Log4j2 Configuration                                                  -->
-<!--                                                                       -->
-<!-- ===================================================================== -->
-
-<!--
-   | For more configuration information and examples see the Apache Log4j2
-   | website: https://logging.apache.org/log4j/2.x/index.html
--->
-
 <Configuration status="WARN" dest="errors/hello-jlupin-scala_log4j2_status.log">
     <!-- Extract log directory and file name into variables -->
     <Properties>
