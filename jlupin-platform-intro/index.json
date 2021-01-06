@@ -8,6 +8,7 @@
       {
         "title": "Installing and starting JLuping platform",
         "courseData": "scripts/install-jlupin.sh",
+        "code": "scripts/wait-for-install.sh",
         "text": "step1_2.md"
       },
       {
