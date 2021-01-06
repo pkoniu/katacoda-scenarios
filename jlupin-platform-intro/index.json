@@ -21,26 +21,6 @@
         "title": "Webcontrol",
         "text": "webcontrol.md"
       }
-      // {
-      //   "title": "Deploying own microservice - part 1",
-      //   "text": "step4.md"
-      // },
-      // {
-      //   "title": "Deploying own microservice - part 2",
-      //   "text": "step5.md"
-      // },
-      // {
-      //   "title": "Deploying own microservice - part 3",
-      //   "text": "step6.md"
-      // },
-      // {
-      //   "title": "Deploying own microservice - part 4",
-      //   "text": "step7.md"
-      // },
-      // {
-      //   "title": "Deploying own microservice - part 5",
-      //   "text": "step8.md"
-      // }
     ],
     "intro": {
       "text": "intro.md"
