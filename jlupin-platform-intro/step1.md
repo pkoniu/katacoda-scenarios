@@ -6,7 +6,7 @@
 `apt update`{{execute}}
 
 - Install required dependencies
-`apt install -y curl openjdk-14-jre-headless unzip`{{execute}}
+`apt install -y curl unzip`{{execute}}
 
 - Create required directories
 `mkdir -p /opt/jlupin`{{execute}}
