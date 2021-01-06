@@ -14,6 +14,7 @@ Verify maven installation and `$JAVA_HOME` environment variable:
 ## Packaging
 
 In order to deploy an application to jlupin we need to create a fat jar, containing all required libraries. To achieve this, run following command:
+`mvn com.jlupin:jlupin-platform-maven-plugin:repackage`{{execute}}
 `mvn package`{{execute}}
 
 ## Manual deploy

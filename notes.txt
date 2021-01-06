@@ -1,0 +1,4 @@
+- failed repackage:
+  - cmd: mvn com.jlupin:jlupin-platform-maven-plugin:repackage
+  - error: Failed to execute goal com.jlupin:jlupin-platform-maven-plugin:1.6.1.0:repackage (default-cli) on project hello-jlupin-scala: Error occurred while repackaging archive: Error occurred while unpacking output file /root/hello-jlupin-scala/target/hello-jlupin-scala-app-1.0.jar.: /root/hello-jlupin-scala/target/repackage/lib-provided (Is a directory) -> [Help 1]
+  - project files as in tutorial

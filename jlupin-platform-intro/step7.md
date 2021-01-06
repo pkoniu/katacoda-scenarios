@@ -11,7 +11,7 @@
     <parent>
         <artifactId>jlupin-platform-parent</artifactId>
         <groupId>com.jlupin</groupId>
-        <version>1.6.0.2</version>
+        <version>1.6.1.0</version>
     </parent>
 
     <name>hello-jlupin-scala</name>
@@ -20,22 +20,18 @@
     <version>1.0</version>
 
     <repositories>
-        <!-- Repository is also accessible using https connection: -->
-        <!-- https://support.jlupin.com/maven2/ -->
         <repository>
             <id>jlupin-central</id>
             <name>jlupin</name>
-            <url>http://support.jlupin.com/maven2/</url>
+            <url>https://support.jlupin.com/maven2/</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
-        <!-- Repository is also accessible using https connection: -->
-        <!-- https://support.jlupin.com/maven2/ -->
         <pluginRepository>
             <id>jlupin-central</id>
             <name>jlupin</name>
-            <url>http://support.jlupin.com/maven2/</url>
+            <url>https://support.jlupin.com/maven2/</url>
         </pluginRepository>
     </pluginRepositories>
 

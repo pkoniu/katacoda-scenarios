@@ -81,7 +81,7 @@ ENTRY_POINTS:
     #  serviceName: 'sampleServiceName2'
     #  methodName: 'sampleMethodName2'
 PROPERTIES:
-  platformVersion: '1.6.0.0'
+  platformVersion: '1.6.1.0'
   #jvmOptions1: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml -agentlib:jdwp=transport=dt_socket,address=12998,server=y,suspend=n'
   jvmOptions1: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml' #jvmOptions_2 - default the same as jvmOptions_1
   #jvmOptions2: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml'
@@ -124,7 +124,7 @@ PROPERTIES:
                            return true;
                          }'
 APPLICATION:
-  applicationContainerProducerClassName: 'com.example.configuration.ScalaHelloWorldJLupinConfiguration
+  applicationContainerProducerClassName: 'com.example.configuration.ScalaHelloWorldJLupinConfiguration'
 INITIALIZING_LOGGER:
   #directoryPath: '/logs/server'
   #fileName: 'file_name'
