@@ -1,0 +1,48 @@
+{
+  "title": "Introduction to JLupin Platform",
+  "description": "",
+  "icon": "assets/jlupin.png",
+  "difficulty": "Beginner",
+  "time": "60 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "JLupin setup",
+        "courseData": "scripts/install-jlupin.sh",
+        "code": "scripts/wait-for-install.sh",
+        "text": "setup.md"
+      },
+      {
+        "title": "Exchange",
+        "text": "exchange.md"
+      },
+      {
+        "title": "Webcontrol",
+        "text": "webcontrol.md"
+      },
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Exchange",
+        "href": "https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/webexchange"
+      },
+      {
+        "name": "Webcontrol",
+        "href": "https://[[HOST_SUBDOMAIN]]-8888-[[KATACODA_HOST]].environments.katacoda.com/webcontrol"
+      }
+    ],
+    "uilayout": "terminal-iframe"
+  },
+  "backend": {
+    "imageid": "openjdk:15"
+  }
+}
