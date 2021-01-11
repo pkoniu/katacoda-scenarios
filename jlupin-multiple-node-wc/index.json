@@ -10,22 +10,26 @@
         "title": "JLupin setup",
         "courseData": "scripts/install-jlupin.sh",
         "code": "scripts/wait-for-install.sh",
-        "text": "setup.md"
+        "text": "01_setup.md"
       },
       {
         "title": "Exchange",
-        "text": "exchange.md"
+        "text": "02_exchange.md"
       },
       {
         "title": "Webcontrol",
-        "text": "webcontrol.md"
+        "text": "03_webcontrol.md"
+      },
+      {
+        "title": "Enabling communication between nodes",
+        "text": "04_node_comms.md"
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "00_intro.md"
     },
     "finish": {
-      "text": "finish.md"
+      "text": "99_finish.md"
     }
   },
   "environment": {

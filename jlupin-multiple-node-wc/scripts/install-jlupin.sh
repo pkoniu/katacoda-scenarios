@@ -3,9 +3,11 @@
 # echo "Installing system dependencies"
 apt update
 apt install -y curl unzip
+echo "done" >> /opt/.sys-dep-install
 
 # echo "Downloading jlupin@1.6.1"
 curl https://jlupin.io/jlsa/download?id=50_645 -o jlupin.zip
+echo "done" >> /opt/.jlupin-download
 
 # echo "Preparing JLupin"
 mkdir -p /opt/jlupin
@@ -17,6 +19,7 @@ echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.con
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers/admin.conf
 
 sed -i 's/discoveryPeersDefaultAdminPort = "8889"/discoveryPeersDefaultAdminPort = "18889"/' /opt/jlupin/platform/start/configuration/edge.conf
+echo "done" >> /opt/.jlupin1-done
 
 mkdir -p /opt/jlupin/platform2
 unzip jlupin.zip -d /opt/jlupin/platform2
@@ -65,13 +68,21 @@ sed -i 's/  transmissionPort:  9096/  transmissionPort: 19096/' /opt/jlupin/plat
 sed -i "s/  externalPort: '8000'/  externalPort: '18000'/" /opt/jlupin/platform2/application/exchange/servlet_configuration.yml
 sed -i "s/  externalPort: '8888'/  externalPort: '18888'/" /opt/jlupin/platform2/application/webcontrol/servlet_configuration.yml
 
+echo "done" >> /opt/.jlupin2-done
+
 # echo "Starting JLupin"
-#/opt/jlupin/platform/start/start.sh
-#/opt/jlupin/platform2/start/start.sh
+/opt/jlupin/platform/start/start.sh
+/opt/jlupin/platform2/start/start.sh
 
 # Stopping exchange-related microservices
-# /opt/jlupin/platform/start/control.sh microservice stop 
-# /opt/jlupin/platform2/start/control.sh microservice stop 
+# /opt/jlupin/platform/start/control.sh microservice stop
+# /opt/jlupin/platform2/start/control.sh microservice stop
+
+# NODE_1
+# node peer add NODE_2 localhost 19090 19095 19096 19097
+
+# NODE_2
+# node peer add NODE_1 localhost
 
 # Notifying finish
-echo "done" >> /opt/.backgroundfinished
+echo "done" >> /opt/.setup-finish
