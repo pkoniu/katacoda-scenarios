@@ -65,8 +65,8 @@ sed -i 's/  externalPort: 8000/  externalPort: 18000/' /opt/jlupin/platform2/app
 sed -i 's/  externalPort: 8888/  externalPort: 18888/' /opt/jlupin/platform2/application/webcontrol/servlet_configuration.yml
 
 # echo "Starting JLupin"
-/opt/jlupin/platform/start/start.sh
-/opt/jlupin/platform2/start/start.sh
+#/opt/jlupin/platform/start/start.sh
+#/opt/jlupin/platform2/start/start.sh
 
 # Stopping exchange-related microservices
 # /opt/jlupin/platform/start/control.sh microservice stop 
