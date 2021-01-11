@@ -62,8 +62,8 @@ sed -i 's/  server_name edge8001;/  server_name edge18001;/' /opt/jlupin/platfor
 sed -i 's/  transmissionPort:  9096/  transmissionPort: 19096/' /opt/jlupin/platform2/start/control/configuration/control.yml
 sed -i 's/  transmissionPort:  9096/  transmissionPort: 19096/' /opt/jlupin/platform2/application/webcontrol/control.yml
 
-sed -i 's/  externalPort: 8000/  externalPort: 18000/' /opt/jlupin/platform2/application/exchange/servlet_configuration.yml
-sed -i 's/  externalPort: 8888/  externalPort: 18888/' /opt/jlupin/platform2/application/webcontrol/servlet_configuration.yml
+sed -i "s/  externalPort: '8000'/  externalPort: '18000'/" /opt/jlupin/platform2/application/exchange/servlet_configuration.yml
+sed -i "s/  externalPort: '8888'/  externalPort: '18888'/" /opt/jlupin/platform2/application/webcontrol/servlet_configuration.yml
 
 # echo "Starting JLupin"
 #/opt/jlupin/platform/start/start.sh
