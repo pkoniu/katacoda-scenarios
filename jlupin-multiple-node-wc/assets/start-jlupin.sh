@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -ex
+
+echo "Starting JLupin platform..."
+
 /opt/jlupin/platform/start/start.sh
 
 status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
@@ -11,4 +15,4 @@ do
   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
 done
 
-echo "JLupin started successfully"
+echo "JLupin platform started successfully."
