@@ -1,1 +1,0 @@
-[JLuping WebControl](https://[[HOST_SUBDOMAIN]]-8888-[[KATACODA_HOST]].environments.katacoda.com/exchange/)
