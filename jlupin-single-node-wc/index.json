@@ -1,5 +1,5 @@
 {
-  "title": "Introduction to JLupin Platform",
+  "title": "Introduction to JLupin Platform - single node on single instance",
   "description": "",
   "icon": "assets/jlupin.png",
   "difficulty": "Beginner",
@@ -10,37 +10,26 @@
         "title": "JLupin setup",
         "courseData": "scripts/install-jlupin.sh",
         "code": "scripts/wait-for-install.sh",
-        "text": "setup.md"
+        "text": "01_setup.md"
       },
       {
         "title": "Exchange",
-        "text": "exchange.md"
+        "text": "02_exchange.md"
       },
       {
         "title": "Webcontrol",
-        "text": "webcontrol.md"
+        "text": "03_webcontrol.md"
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "00_intro.md"
     },
     "finish": {
-      "text": "finish.md"
+      "text": "99_finish.md"
     }
   },
   "environment": {
-    "showdashboard": true,
-    "dashboards": [
-      {
-        "name": "Exchange",
-        "href": "https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/webexchange"
-      },
-      {
-        "name": "Webcontrol",
-        "href": "https://[[HOST_SUBDOMAIN]]-8888-[[KATACODA_HOST]].environments.katacoda.com/webcontrol"
-      }
-    ],
-    "uilayout": "terminal-iframe"
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "openjdk:15"
