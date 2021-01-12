@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo "Starting JLupin platform..."
+node_number=$1
 
-/opt/jlupin/platform/start/start.sh
+echo "Starting JLupin platform for node $node_number..."
+
+/opt/jlupin/platform${node_number}/start/start.sh
 
 echo "Waiting for intialization..."
 

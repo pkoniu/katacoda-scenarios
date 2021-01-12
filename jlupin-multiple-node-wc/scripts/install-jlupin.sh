@@ -28,14 +28,16 @@ curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_versi
 echo "done" >> /opt/.jlupin-download
 
 # echo "Preparing JLupin"
-mkdir -p /opt/jlupin
+mkdir -p /opt/jlupin/platform1
 
-unzip jlupin.zip -d /opt/jlupin
-chmod 750 /opt/jlupin/platform/start/start.sh
-chmod 750 /opt/jlupin/platform/start/control.sh
+unzip jlupin.zip -d /opt/jlupin/platform1
+mv /opt/jlupin/platform1/platform/* /opt/jlupin/platform1
+rm -rf /opt/jlupin/platform1/platform
+chmod 750 /opt/jlupin/platform1/start/start.sh
+chmod 750 /opt/jlupin/platform1/start/control.sh
 # echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf
-sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
-sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers/admin.conf
+sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
+sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
 
 echo "done" >> /opt/.jlupin1-done
 
