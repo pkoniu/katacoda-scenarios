@@ -1,13 +1,20 @@
 #!/bin/bash
 
 # echo "Changing ulimits"
-sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
-sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
-sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
-sed -i -e '$aroot            hard    nproc           32768' /etc/security/limits.conf
+# sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
+# sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
+# sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
+# sed -i -e '$aroot            hard    nproc           32768' /etc/security/limits.conf
 # sysctl -p /etc/security/limits.conf
-sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session
-sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session-noninteractive
+
+# sed -i 's/#DefaultLimitNOFILE=/DefaultLimitNOFILE=64500/' /etc/systemd/system.conf
+# sed -i 's/#DefaultLimitNPROC=/DefaultLimitNPROC=32768/' /etc/systemd/system.conf
+
+# sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session
+# sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session-noninteractive
+ulimit -n 64500
+ulimit -u 32768
+
 echo "done" >> /opt/.sys-setup
 
 # echo "Installing system dependencies"
