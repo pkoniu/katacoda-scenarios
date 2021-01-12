@@ -2,13 +2,17 @@
 
 node_number=$1
 
+if [ $node_number == '1' ]; then
+  port=8000
+else
+  port=18000
+fi
+
 echo "Starting JLupin platform for node $node_number..."
 
 /opt/jlupin/platform${node_number}/start/start.sh
 
-status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
-
-check-jlupin-status.sh &
+check-jlupin-status.sh $port &
 pid=$!
 
 echo "Waiting for initialization..."
