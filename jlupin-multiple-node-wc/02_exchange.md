@@ -4,7 +4,6 @@ If the scripts in the previous step finished successfully, you should be able to
 [exchange app - deployed on NODE_1](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/)
 or
 [exchange app - deployed on NODE_2](https://[[HOST_SUBDOMAIN]]-18000-[[KATACODA_HOST]].environments.katacoda.com/exchange/).
-You should also be able to see the application in the tab "Exchange", next to the terminal.
 
 ## CLI - basic commands
 
