@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# echo "Changing ulimits"
+echo "Changing ulimits"
 sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
 sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
 sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
@@ -15,18 +15,18 @@ sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session-noninteract
 ulimit -n 64500
 ulimit -u 32768
 
-echo "done" >> /opt/.sys-setup
+# echo "done" >> /opt/.sys-setup
 
-# echo "Installing system dependencies"
+echo "Installing system dependencies"
 apt update
 apt install -y curl unzip htop
-echo "done" >> /opt/.sys-dep-install
+# echo "done" >> /opt/.sys-dep-install
 
-# echo "Downloading jlupin@1.6.1"
+echo "Downloading jlupin@1.6.1"
 curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_version_1_6_1_latest.zip -o jlupin.zip
-echo "done" >> /opt/.jlupin-download
+# echo "done" >> /opt/.jlupin-download
 
-# echo "Preparing JLupin"
+echo "Preparing JLupin"
 mkdir -p /opt/jlupin/platform1
 
 unzip jlupin.zip -d /opt/jlupin/platform1
@@ -36,9 +36,10 @@ chmod 750 /opt/jlupin/platform1/start/start.sh
 chmod 750 /opt/jlupin/platform1/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
-echo "done" >> /opt/.jlupin-setup
+# echo "done" >> /opt/.jlupin-setup
 
+echo "Starting JLupin platform"
 start-jlupin.sh
 
-# Notifying finish
-echo "done" >> /opt/.scenario-setup
+echo "Finished"
+# echo "done" >> /opt/.scenario-setup
