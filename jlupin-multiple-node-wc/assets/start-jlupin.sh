@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -ex
-
 echo "Starting JLupin platform..."
 
 /opt/jlupin/platform/start/start.sh
