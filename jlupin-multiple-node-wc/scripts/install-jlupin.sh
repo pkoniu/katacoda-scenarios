@@ -19,7 +19,6 @@ chmod 750 /opt/jlupin/platform/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers/admin.conf
 
-sed -i 's/discoveryPeersDefaultAdminPort = "8889"/discoveryPeersDefaultAdminPort = "18889"/' /opt/jlupin/platform/start/configuration/edge.conf
 echo "done" >> /opt/.jlupin1-done
 
 mkdir -p /opt/jlupin/platform2
