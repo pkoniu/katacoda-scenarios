@@ -71,13 +71,13 @@ sed -i "s/  externalPort: '8888'/  externalPort: '18888'/" /opt/jlupin/platform2
 echo "done" >> /opt/.jlupin2-done
 
 # echo "Starting JLupin"
-/opt/jlupin/platform/start/start.sh
-sleep 30
-echo "done" >> /opt/.jlupin1-start
+# /opt/jlupin/platform/start/start.sh
+# sleep 30
+# echo "done" >> /opt/.jlupin1-start
 
-/opt/jlupin/platform2/start/start.sh
-sleep 30
-echo "done" >> /opt/.jlupin2-start
+# /opt/jlupin/platform2/start/start.sh
+# sleep 30
+# echo "done" >> /opt/.jlupin2-start
 
 # Stopping exchange-related microservices
 # /opt/jlupin/platform/start/control.sh microservice stop
