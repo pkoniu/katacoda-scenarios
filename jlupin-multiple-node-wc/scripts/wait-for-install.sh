@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # TODO: "quiet" mode
+echo "Tweaking system settings"; while [ ! -f /opt/.sys-setup ] ; do sleep 2; done; echo "Done!"
 echo "Installing system dependencies"; while [ ! -f /opt/.sys-dep-install ] ; do sleep 2; done; echo "Done!"
 echo "Downloading jlupin"; while [ ! -f /opt/.jlupin-download ] ; do sleep 2; done; echo "Done!"
 echo "Setting up 1st jlupin node"; while [ ! -f /opt/.jlupin1-done ] ; do sleep 2; done; echo "Done!"

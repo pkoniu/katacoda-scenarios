@@ -1,12 +1,21 @@
 #!/bin/bash
 
+# echo "Changing ulimits"
+sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
+sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
+sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
+sed -i -e '$aroot            hard    nproc           64500' /etc/security/limits.conf
+sysctl -p
+echo "done" >> /opt/.sys-setup
+
 # echo "Installing system dependencies"
 apt update
-apt install -y curl unzip
+apt install -y curl unzip htop
 echo "done" >> /opt/.sys-dep-install
 
 # echo "Downloading jlupin@1.6.1"
-curl https://jlupin.io/jlsa/download?id=50_645 -o jlupin.zip
+# curl https://jlupin.io/jlsa/download?id=50_645 -o jlupin.zip
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_version_1_6_1_latest.zip -o jlupin.zip
 echo "done" >> /opt/.jlupin-download
 
 # echo "Preparing JLupin"
