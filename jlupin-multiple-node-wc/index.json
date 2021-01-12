@@ -5,6 +5,15 @@
   "difficulty": "Beginner",
   "time": "60 minutes",
   "details": {
+    "assets": {
+      "host01": [
+        {
+          "file": "assets/start-jlupin.sh",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        }
+      ]
+    },
     "steps": [
       {
         "title": "JLupin setup",
