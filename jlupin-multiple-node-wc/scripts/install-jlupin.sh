@@ -29,7 +29,7 @@ rm -rf /opt/jlupin/platform2/platform
 chmod 750 /opt/jlupin/platform2/start/start.sh
 chmod 750 /opt/jlupin/platform2/start/control.sh
 # echo 'user root root;' | cat - /opt/jlupin/platform2/start/configuration/edge.conf | tee /opt/jlupin/platform2/start/configuration/edge.conf
-sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
+sed -i '1iuser root root;' /opt/jlupin/platform2/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform2/technical/nginx/linux/conf/servers/admin.conf
 
 sed -i 's/DEBUG_PORT=12998/DEBUG_PORT=13998/' /opt/jlupin/platform2/start/configuration/setenv
