@@ -18,8 +18,7 @@
 # echo "done" >> /opt/.sys-setup
 
 echo "Installing system dependencies"
-apt update
-apt install -y curl unzip htop
+apt update && apt install -y curl unzip
 # echo "done" >> /opt/.sys-dep-install
 
 echo "Downloading jlupin@1.6.1"
@@ -37,6 +36,7 @@ sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers
 
 echo "Starting JLupin platform"
 start-jlupin.sh
+
 
 echo "Finished"
 # echo "done" >> /opt/.scenario-setup
