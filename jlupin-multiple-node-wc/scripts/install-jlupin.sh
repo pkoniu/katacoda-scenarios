@@ -5,7 +5,9 @@ sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits
 sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
 sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
 sed -i -e '$aroot            hard    nproc           32768' /etc/security/limits.conf
-sysctl -p /etc/security/limits.conf
+# sysctl -p /etc/security/limits.conf
+sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session
+sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session-noninteractive
 echo "done" >> /opt/.sys-setup
 
 # echo "Installing system dependencies"
