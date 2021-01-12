@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -ex
 # echo "Changing ulimits"
 # sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
 # sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
