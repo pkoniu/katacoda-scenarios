@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# echo "Changing ulimits"
+sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
+sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
+sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
+sed -i -e '$aroot            hard    nproc           32768' /etc/security/limits.conf
+sysctl -p /etc/security/limits.conf
+
+sed -i 's/#DefaultLimitNOFILE=/DefaultLimitNOFILE=64500/' /etc/systemd/system.conf
+sed -i 's/#DefaultLimitNPROC=/DefaultLimitNPROC=32768/' /etc/systemd/system.conf
+
+sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session
+sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session-noninteractive
+ulimit -n 64500
+ulimit -u 32768
+
+echo "done" >> /opt/.sys-setup
+
+# echo "Installing system dependencies"
+apt update
+apt install -y curl unzip htop
+echo "done" >> /opt/.sys-dep-install
+
+# echo "Downloading jlupin@1.6.1"
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_version_1_6_1_latest.zip -o jlupin.zip
+echo "done" >> /opt/.jlupin-download
+
+# echo "Preparing JLupin"
+mkdir -p /opt/jlupin/platform1
+
+unzip jlupin.zip -d /opt/jlupin/platform1
+mv /opt/jlupin/platform1/platform/* /opt/jlupin/platform1
+rm -rf /opt/jlupin/platform1/platform
+chmod 750 /opt/jlupin/platform1/start/start.sh
+chmod 750 /opt/jlupin/platform1/start/control.sh
+sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
+sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
+echo "done" >> /opt/.jlupin-setup
+
+start-jlupin.sh
+
+# Notifying finish
+echo "done" >> /opt/.scenario-setup
