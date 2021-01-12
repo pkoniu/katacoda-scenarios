@@ -9,5 +9,8 @@ Starting jlupin node:
 
 Where `[node_no]` can be either 1 or 2 in this scenario.
 
-Example:
+Start NODE_1:
 `start-jlupin.sh 1`{{execute}}
+
+Start NODE_2:
+`start-jlupin.sh 2`{{execute}}
