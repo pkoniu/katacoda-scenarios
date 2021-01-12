@@ -15,7 +15,8 @@ mkdir -p /opt/jlupin
 unzip jlupin.zip -d /opt/jlupin
 chmod 750 /opt/jlupin/platform/start/start.sh
 chmod 750 /opt/jlupin/platform/start/control.sh
-echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf
+# echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf
+sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers/admin.conf
 
 sed -i 's/discoveryPeersDefaultAdminPort = "8889"/discoveryPeersDefaultAdminPort = "18889"/' /opt/jlupin/platform/start/configuration/edge.conf
@@ -27,8 +28,8 @@ mv /opt/jlupin/platform2/platform/* /opt/jlupin/platform2
 rm -rf /opt/jlupin/platform2/platform
 chmod 750 /opt/jlupin/platform2/start/start.sh
 chmod 750 /opt/jlupin/platform2/start/control.sh
-cp /opt/jlupin/platform/start/configuration/edge.conf /opt/jlupin/platform2/start/configuration/edge.conf
 # echo 'user root root;' | cat - /opt/jlupin/platform2/start/configuration/edge.conf | tee /opt/jlupin/platform2/start/configuration/edge.conf
+sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform2/technical/nginx/linux/conf/servers/admin.conf
 
 sed -i 's/DEBUG_PORT=12998/DEBUG_PORT=13998/' /opt/jlupin/platform2/start/configuration/setenv
