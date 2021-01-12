@@ -15,7 +15,7 @@ Check if all microservices for both jlupin installations started completely:
 `/opt/jlupin/platform/start/control.sh microservice tech nginx status`{{execute}}
 
 ## NODE_2
-- Start NODE_1:
+- Start NODE_2:
 `/opt/jlupin/platform2/start/start.sh`{{execute}}
 
 - Check services status:
