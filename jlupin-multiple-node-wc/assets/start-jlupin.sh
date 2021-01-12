@@ -10,10 +10,23 @@ echo "Waiting for intialization..."
 
 status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
 
-while [[ "$status" != "200" ]]
+check-jlupin-status.sh &
+
+pid=$!
+
+spin[0]="-"
+spin[1]="\\"
+spin[2]="|"
+spin[3]="/"
+
+echo -n "[initializing] ${spin[0]}"
+while [ kill -0 $pid ]
 do
-  sleep 5
-  status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
+  for i in "${spin[@]}"
+  do
+        echo -ne "\b$i"
+        sleep 0.1
+  done
 done
 
 echo "JLupin platform started successfully."
