@@ -13,12 +13,12 @@
         "text": "01_setup.md"
       },
       {
-        "title": "Microservice deployment",
-        "text": "02_deploy.md"
+        "title": "Microservice deployment using Webcontrol",
+        "text": "02_deploy_wc.md"
       },
       {
-        "title": "Test",
-        "text": "03_test.md"
+        "title": "Microservice deployment using CLI",
+        "text": "03_deploy_cli.md"
       }
     ],
     "assets": {
