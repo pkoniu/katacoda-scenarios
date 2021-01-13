@@ -19,6 +19,7 @@ echo "done" >> /opt/.jlupin-setup
 
 # echo "Starting JLupin platform"
 /opt/jlupin/platform/start/start.sh
+echo "done" >> /opt/.jlupin-started
 
 status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
 
@@ -29,4 +30,4 @@ do
 done
 
 # echo "Finished"
-echo "done" >> /opt/.jlupin-started
+echo "done" >> /opt/.exchange-available
