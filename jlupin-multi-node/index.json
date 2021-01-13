@@ -8,8 +8,8 @@
     "steps": [
       {
         "title": "JLupin setup",
-        "courseData": "scripts/install-jlupin.sh",
-        "code": "scripts/wait-for-install.sh",
+        "courseData": "scripts/background.sh",
+        "code": "scripts/foreground.sh",
         "text": "01_setup.md"
       },
       {
