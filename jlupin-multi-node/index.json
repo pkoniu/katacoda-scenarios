@@ -1,5 +1,5 @@
 {
-  "title": "Introduction to JLupin Platform - multiple nodes on single instance with JPPC enabled",
+  "title": "Introduction to JLupin Platform - multiple nodes",
   "description": "",
   "icon": "assets/jlupin.png",
   "difficulty": "Beginner",
@@ -28,12 +28,7 @@
     "assets": {
       "host01": [
         {
-          "file": "start-jlupin.sh",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
-        },
-        {
-          "file": "check-jlupin-status.sh",
+          "file": "wait.sh",
           "target": "/usr/local/bin/",
           "chmod": "+x"
         }
@@ -47,7 +42,7 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "openjdk:15"
