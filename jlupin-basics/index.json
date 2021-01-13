@@ -8,7 +8,8 @@
     "steps": [
       {
         "title": "JLupin setup",
-        "code": "scripts/install-jlupin.sh",
+        "courseData": "scripts/setup-jlupin.sh",
+        "code": "scripts/setup-progress.sh",
         "text": "01_setup.md"
       },
       {
@@ -27,12 +28,7 @@
     "assets": {
       "host01": [
         {
-          "file": "start-jlupin.sh",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
-        },
-        {
-          "file": "check-jlupin-status.sh",
+          "file": "wait.sh",
           "target": "/usr/local/bin/",
           "chmod": "+x"
         }
