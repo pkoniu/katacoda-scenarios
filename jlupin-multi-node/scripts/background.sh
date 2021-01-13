@@ -23,7 +23,6 @@ apt install -y curl unzip htop
 echo "done" >> /opt/.sys-deps-installed
 
 # echo "Downloading jlupin@1.6.1"
-# curl https://jlupin.io/jlsa/download?id=50_645 -o jlupin.zip
 curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_version_1_6_1_latest.zip -o jlupin.zip
 echo "done" >> /opt/.jlupin-downloaded
 
