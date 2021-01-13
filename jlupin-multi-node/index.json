@@ -1,0 +1,55 @@
+{
+  "title": "Introduction to JLupin Platform - multiple nodes on single instance with JPPC enabled",
+  "description": "",
+  "icon": "assets/jlupin.png",
+  "difficulty": "Beginner",
+  "time": "60 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "JLupin setup",
+        "courseData": "scripts/install-jlupin.sh",
+        "code": "scripts/wait-for-install.sh",
+        "text": "01_setup.md"
+      },
+      {
+        "title": "Exchange",
+        "text": "02_exchange.md"
+      },
+      {
+        "title": "Webcontrol",
+        "text": "03_webcontrol.md"
+      },
+      {
+        "title": "Enabling communication between nodes",
+        "text": "04_node_comms.md"
+      }
+    ],
+    "assets": {
+      "host01": [
+        {
+          "file": "start-jlupin.sh",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "check-jlupin-status.sh",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        }
+      ]
+    },
+    "intro": {
+      "text": "00_intro.md"
+    },
+    "finish": {
+      "text": "99_finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal"
+  },
+  "backend": {
+    "imageid": "openjdk:15"
+  }
+}
