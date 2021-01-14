@@ -2,8 +2,8 @@
 
 show_progress()
 {
-  local -r pid="${1}"
-  local -r delay='0.75'
+  # local -r pid="${1}"
+  local -r delay='0.5'
   local spinstr='\|/-'
   local temp
 
