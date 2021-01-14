@@ -46,29 +46,29 @@ show_progress()
   echo -n "Preparing jlupin configuration for NODE_2..."
   spin_until "/opt/.jlupin2-setup"
 
-  echo -n "Starting jlupin platform on NODE_1..."
-  spin_until "/opt/.jlupin1-started"
+  # echo -n "Starting jlupin platform on NODE_1..."
+  # spin_until "/opt/.jlupin1-started"
 
-  echo -n "Waiting for example app to be available on NODE_1..."
-  spin_until "/opt/.exchange1-available"
+  # echo -n "Waiting for example app to be available on NODE_1..."
+  # spin_until "/opt/.exchange1-available"
 
-  echo -n "Starting jlupin platform on NODE_2..."
-  spin_until "/opt/.jlupin2-started"
+  # echo -n "Starting jlupin platform on NODE_2..."
+  # spin_until "/opt/.jlupin2-started"
 
-  echo -n "Waiting for example app to be available on NODE_2..."
-  spin_until "/opt/.exchange2-available"
+  # echo -n "Waiting for example app to be available on NODE_2..."
+  # spin_until "/opt/.exchange2-available"
 
   echo -n "Preparing JLupin Platform Control Center - Core..."
   spin_until "/opt/.jpcc-core-prepared"
 
-  echo -n "Starting JLupin Platform Control Center - Core..."
-  spin_until "/opt/.jpcc-core-started"
+  # echo -n "Starting JLupin Platform Control Center - Core..."
+  # spin_until "/opt/.jpcc-core-started"
 
   echo -n "Preparing JLupin Platform Control Center - Client..."
   spin_until "/opt/.jpcc-client-prepared"
 
-  echo -n "Starting Jlupin Platform Control Center - Client..."
-  spin_until "/opt/.jpcc-client-started"
+  # echo -n "Starting Jlupin Platform Control Center - Client..."
+  # spin_until "/opt/.jpcc-client-started"
 }
 
 show_progress

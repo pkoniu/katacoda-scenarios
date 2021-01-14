@@ -101,31 +101,34 @@ sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize:
 echo "done" >> /opt/.jlupin2-setup
 
 # echo "Starting JLupin 1"
-/opt/jlupin/platform1/start/start.sh
-echo "done" >> /opt/.jlupin1-started
+# /opt/jlupin/platform1/start/start.sh
+# echo "done" >> /opt/.jlupin1-started
 
-status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
+# status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
 
-while [[ "$status" != "200" ]]
-do
-  sleep 5
-  status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
-done
+# while [[ "$status" != "200" ]]
+# do
+#   sleep 5
+#   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
+# done
 
-# echo "Finished"
-echo "done" >> /opt/.exchange1-available
+# # echo "Finished"
+# echo "done" >> /opt/.exchange1-available
 
 # echo "Starting JLupin 2"
-/opt/jlupin/platform2/start/start.sh
-echo "done" >> /opt/.jlupin2-started
+# /opt/jlupin/platform2/start/start.sh
+# echo "done" >> /opt/.jlupin2-started
 
-status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
+# status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
 
-while [[ "$status" != "200" ]]
-do
-  sleep 5
-  status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
-done
+# while [[ "$status" != "200" ]]
+# do
+#   sleep 5
+#   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
+# done
+
+# echo "Finished"
+# echo "done" >> /opt/.exchange2-available
 
 # echo "Preparing jpcc-core@1.6.1"
 unzip jpcc-core.zip -d /opt/jlupin
@@ -140,6 +143,3 @@ echo "done" >> /opt/.jpcc-client-prepared
 
 # echo "Starting jpcc-client@1.6.1"
 echo "done" >> /opt/.jpcc-client-started
-
-# echo "Finished"
-echo "done" >> /opt/.exchange2-available
