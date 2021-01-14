@@ -127,11 +127,19 @@ do
   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
 done
 
-# echo "Preparing JPCC_core@1.6.1"
+# echo "Preparing jpcc-core@1.6.1"
 unzip jpcc-core.zip -d /opt/jlupin
+echo "done" >> /opt/.jpcc-core-prepared
 
-# echo "Preparing JPCC_client@1.6.1"
+# echo "Starting jpcc-core@1.6.1"
+echo "done" >> /opt/.jpcc-core-started
+
+# echo "Preparing jpcc-client@1.6.1"
 unzip jpcc-client.zip -d /opt/jlupin
+echo "done" >> /opt/.jpcc-client-prepared
+
+# echo "Starting jpcc-client@1.6.1"
+echo "done" >> /opt/.jpcc-client-started
 
 # echo "Finished"
 echo "done" >> /opt/.exchange2-available
