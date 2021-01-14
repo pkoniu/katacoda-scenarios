@@ -26,7 +26,15 @@ echo "done" >> /opt/.sys-deps-installed
 curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_version_1_6_1_latest.zip -o jlupin.zip
 echo "done" >> /opt/.jlupin-downloaded
 
-# echo "Preparing JLupin"
+# echo "Downloading jpcc-core@1.6.1"
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_control_center_1_6_1_0_beta.zip -o jpcc-core.zip
+echo "done" >> /opt/.jpcc-core-downloaded
+
+# echo "Downloading jpcc-client@1.6.1"
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/jlupin_platform_control_center_client_version_1_6_1_latest.zip -o jpcc-client.zip
+echo "done" >> /opt/.jpcc-client-downloaded
+
+# echo "Preparing JLupin 1"
 mkdir -p /opt/jlupin/platform1
 
 unzip jlupin.zip -d /opt/jlupin/platform1
@@ -38,9 +46,9 @@ chmod 750 /opt/jlupin/platform1/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
 sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform1/application/currency-converter-eur/configuration.yml
-
 echo "done" >> /opt/.jlupin1-setup
 
+# echo "Preparing JLupin 2"
 mkdir -p /opt/jlupin/platform2
 unzip jlupin.zip -d /opt/jlupin/platform2
 mv /opt/jlupin/platform2/platform/* /opt/jlupin/platform2
@@ -118,6 +126,12 @@ do
   sleep 5
   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
 done
+
+# echo "Preparing JPCC_core@1.6.1"
+unzip jpcc-core.zip -d /opt/jlupin
+
+# echo "Preparing JPCC_client@1.6.1"
+unzip jpcc-client.zip -d /opt/jlupin
 
 # echo "Finished"
 echo "done" >> /opt/.exchange2-available
