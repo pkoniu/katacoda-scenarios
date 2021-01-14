@@ -21,8 +21,12 @@
         "text": "03_webcontrol.md"
       },
       {
-        "title": "Enabling communication between nodes",
-        "text": "04_node_comms.md"
+        "title": "Enabling communication between NODE_1 and NODE_2",
+        "text": "04_node_comms_1_to_2.md"
+      },
+      {
+        "title": "Enabling communication between NODE_2 and NODE_1",
+        "text": "05_node_comms_2_to_1.md"
       }
     ],
     "assets": {
