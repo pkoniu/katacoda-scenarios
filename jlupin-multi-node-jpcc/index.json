@@ -13,20 +13,16 @@
         "text": "01_setup.md"
       },
       {
-        "title": "Exchange",
-        "text": "02_exchange.md"
+        "title": "JPCC basics",
+        "text": "02_jpcc_basics.md"
       },
       {
-        "title": "Webcontrol",
-        "text": "03_webcontrol.md"
+        "title": "JPCC connect NODE_1 to ZONE_1",
+        "text": "03_jpcc_connect_node_1.md"
       },
       {
-        "title": "Enabling communication between NODE_1 and NODE_2",
-        "text": "04_node_comms_1_to_2.md"
-      },
-      {
-        "title": "Enabling communication between NODE_2 and NODE_1",
-        "text": "05_node_comms_2_to_1.md"
+        "title": "JPCC connect NODE_2 to ZONE_1",
+        "text": "04_jpcc_connect_node_2.md"
       }
     ],
     "assets": {

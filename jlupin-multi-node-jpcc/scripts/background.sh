@@ -36,16 +36,51 @@ echo "done" >> /opt/.jpcc-client-downloaded
 
 # echo "Preparing JLupin 1"
 mkdir -p /opt/jlupin/platform1
-
 unzip jlupin.zip -d /opt/jlupin/platform1
 mv /opt/jlupin/platform1/platform/* /opt/jlupin/platform1
 rm -rf /opt/jlupin/platform1/platform
 chmod 750 /opt/jlupin/platform1/start/start.sh
 chmod 750 /opt/jlupin/platform1/start/control.sh
-# echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
+
+sed -i 's/DEBUG_PORT=12998/DEBUG_PORT=13498/' /opt/jlupin/platform1/start/configuration/setenv
+sed -i 's/JMX_PORT=9010/JMX_PORT=9510/' /opt/jlupin/platform1/start/configuration/setenv
+
+sed -i 's/    port: 9090/    port: 9590/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 8082/    port: 8582/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9095/    port: 9595/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9096/    port: 9596/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9097/    port: 9597/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9098/    port: 9598/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/      begin: 20001/      begin: 30001/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/      end: 30000/      end: 40000/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/      begin: 30001/      begin: 40001/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/      end: 40000/      end: 50000/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    jlrmcPort: 9090/    jlrmcPort: 9590/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    queuePort: 9095/    queuePort: 9595/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    transmissionPort: 9096/    transmissionPort: 9596/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    informationPort: 9097/    informationPort: 9597/' /opt/jlupin/platform1/start/configuration/main.yml
+
+sed -i 's/    discoveryPort = "9098"/    discoveryPort = "9598"/' /opt/jlupin/platform1/start/configuration/edge.conf
+sed -i 's/    discoveryPeersDefaultAdminPort = "8889"/    discoveryPeersDefaultAdminPort = "13889"/' /opt/jlupin/platform1/start/configuration/edge.conf
+sed -i 's/    listen  8888;/    listen 13888;/' /opt/jlupin/platform1/start/configuration/edge.conf
+sed -i 's/    listen  8889;/    listen 13889;/' /opt/jlupin/platform1/start/configuration/edge.conf
+
+sed -i 's/  listen  8000;/  listen 13000;/' /opt/jlupin/platform1/start/configuration/edge_servers/edge8000.conf
+sed -i 's/  server_name edge8000;/  server_name edge13000;/' /opt/jlupin/platform1/start/configuration/edge_servers/edge8000.conf
+
+sed -i 's/  listen  8001;/  listen 13001;/' /opt/jlupin/platform1/start/configuration/edge_servers/edge8001.conf
+sed -i 's/  server_name edge8001;/  server_name edge13001;/' /opt/jlupin/platform1/start/configuration/edge_servers/edge8001.conf
+
+sed -i 's/  transmissionPort:  9096/  transmissionPort: 9596/' /opt/jlupin/platform1/start/control/configuration/control.yml
+sed -i 's/  transmissionPort:  9096/  transmissionPort: 9596/' /opt/jlupin/platform1/application/webcontrol/control.yml
+
+sed -i "s/  externalPort: '8000'/  externalPort: '13000'/" /opt/jlupin/platform1/application/exchange/servlet_configuration.yml
+sed -i "s/  externalPort: '8888'/  externalPort: '13888'/" /opt/jlupin/platform1/application/webcontrol/servlet_configuration.yml
+
 sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform1/application/currency-converter-eur/configuration.yml
+
 echo "done" >> /opt/.jlupin1-setup
 
 # echo "Preparing JLupin 2"
@@ -101,44 +136,47 @@ sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize:
 echo "done" >> /opt/.jlupin2-setup
 
 # echo "Starting JLupin 1"
-# /opt/jlupin/platform1/start/start.sh
-# echo "done" >> /opt/.jlupin1-started
+/opt/jlupin/platform1/start/start.sh
+echo "done" >> /opt/.jlupin1-started
 
-# status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
+status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:13000/exchange/convert -s -o /dev/null)
 
-# while [[ "$status" != "200" ]]
-# do
-#   sleep 5
-#   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
-# done
-
-# # echo "Finished"
-# echo "done" >> /opt/.exchange1-available
-
-# echo "Starting JLupin 2"
-# /opt/jlupin/platform2/start/start.sh
-# echo "done" >> /opt/.jlupin2-started
-
-# status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
-
-# while [[ "$status" != "200" ]]
-# do
-#   sleep 5
-#   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
-# done
+while [[ "$status" != "200" ]]
+do
+  sleep 5
+  status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:13000/exchange/convert -s -o /dev/null)
+done
 
 # echo "Finished"
-# echo "done" >> /opt/.exchange2-available
+echo "done" >> /opt/.exchange1-available
+
+# echo "Starting JLupin 2"
+/opt/jlupin/platform2/start/start.sh
+echo "done" >> /opt/.jlupin2-started
+
+status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
+
+while [[ "$status" != "200" ]]
+do
+  sleep 5
+  status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:18000/exchange/convert -s -o /dev/null)
+done
+
+# echo "Finished"
+echo "done" >> /opt/.exchange2-available
 
 # echo "Preparing jpcc-core@1.6.1"
 unzip jpcc-core.zip -d /opt/jlupin
 echo "done" >> /opt/.jpcc-core-prepared
 
 # echo "Starting jpcc-core@1.6.1"
+/opt/jlupin/jlupin-platform-control-center/start/start.sh
+sleep 15  # FIXME implement check for jpcc-core
 echo "done" >> /opt/.jpcc-core-started
 
 # echo "Preparing jpcc-client@1.6.1"
 unzip jpcc-client.zip -d /opt/jlupin
+ln -s /opt/jlupin/jlupin-platform-control-center-client/bin/console.sh /usr/local/sbin/console
 echo "done" >> /opt/.jpcc-client-prepared
 
 # echo "Starting jpcc-client@1.6.1"
