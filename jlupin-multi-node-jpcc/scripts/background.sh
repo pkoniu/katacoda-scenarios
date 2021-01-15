@@ -44,25 +44,25 @@ chmod 750 /opt/jlupin/platform1/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
 
-sed -i 's/DEBUG_PORT=12998/DEBUG_PORT=13498/' /opt/jlupin/platform1/start/configuration/setenv
-sed -i 's/JMX_PORT=9010/JMX_PORT=9510/' /opt/jlupin/platform1/start/configuration/setenv
+sed -i 's/DEBUG_PORT=12998/DEBUG_PORT=14998/' /opt/jlupin/platform1/start/configuration/setenv
+sed -i 's/JMX_PORT=9010/JMX_PORT=14010/' /opt/jlupin/platform1/start/configuration/setenv
 
-sed -i 's/    port: 9090/    port: 9590/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    port: 8082/    port: 8582/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    port: 9095/    port: 9595/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    port: 9096/    port: 9596/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    port: 9097/    port: 9597/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    port: 9098/    port: 9598/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/      begin: 20001/      begin: 30001/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/      end: 30000/      end: 40000/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/      begin: 30001/      begin: 40001/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/      end: 40000/      end: 50000/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    jlrmcPort: 9090/    jlrmcPort: 9590/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    queuePort: 9095/    queuePort: 9595/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    transmissionPort: 9096/    transmissionPort: 9596/' /opt/jlupin/platform1/start/configuration/main.yml
-sed -i 's/    informationPort: 9097/    informationPort: 9597/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9090/    port: 14090/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 8082/    port: 13082/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9095/    port: 14095/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9096/    port: 14096/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9097/    port: 14097/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    port: 9098/    port: 14098/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/      begin: 20001/      begin: 40001/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/      end: 30000/      end: 45000/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/      begin: 30001/      begin: 45001/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/      end: 40000/      end: 50000/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/    jlrmcPort: 9090/    jlrmcPort: 14090/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    queuePort: 9095/    queuePort: 14095/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    transmissionPort: 9096/    transmissionPort: 14096/' /opt/jlupin/platform1/start/configuration/main.yml
+sed -i 's/    informationPort: 9097/    informationPort: 14097/' /opt/jlupin/platform1/start/configuration/main.yml
 
-sed -i 's/    discoveryPort = "9098"/    discoveryPort = "9598"/' /opt/jlupin/platform1/start/configuration/edge.conf
+sed -i 's/    discoveryPort = "9098"/    discoveryPort = "14098"/' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i 's/    discoveryPeersDefaultAdminPort = "8889"/    discoveryPeersDefaultAdminPort = "13889"/' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i 's/    listen  8888;/    listen 13888;/' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i 's/    listen  8889;/    listen 13889;/' /opt/jlupin/platform1/start/configuration/edge.conf
@@ -73,8 +73,8 @@ sed -i 's/  server_name edge8000;/  server_name edge13000;/' /opt/jlupin/platfor
 sed -i 's/  listen  8001;/  listen 13001;/' /opt/jlupin/platform1/start/configuration/edge_servers/edge8001.conf
 sed -i 's/  server_name edge8001;/  server_name edge13001;/' /opt/jlupin/platform1/start/configuration/edge_servers/edge8001.conf
 
-sed -i 's/  transmissionPort:  9096/  transmissionPort: 9596/' /opt/jlupin/platform1/start/control/configuration/control.yml
-sed -i 's/  transmissionPort:  9096/  transmissionPort: 9596/' /opt/jlupin/platform1/application/webcontrol/control.yml
+sed -i 's/  transmissionPort:  9096/  transmissionPort: 14096/' /opt/jlupin/platform1/start/control/configuration/control.yml
+sed -i 's/  transmissionPort:  9096/  transmissionPort: 14096/' /opt/jlupin/platform1/application/webcontrol/control.yml
 
 sed -i "s/  externalPort: '8000'/  externalPort: '13000'/" /opt/jlupin/platform1/application/exchange/servlet_configuration.yml
 sed -i "s/  externalPort: '8888'/  externalPort: '13888'/" /opt/jlupin/platform1/application/webcontrol/servlet_configuration.yml
@@ -104,9 +104,9 @@ sed -i 's/    port: 9095/    port: 19095/' /opt/jlupin/platform2/start/configura
 sed -i 's/    port: 9096/    port: 19096/' /opt/jlupin/platform2/start/configuration/main.yml
 sed -i 's/    port: 9097/    port: 19097/' /opt/jlupin/platform2/start/configuration/main.yml
 sed -i 's/    port: 9098/    port: 19098/' /opt/jlupin/platform2/start/configuration/main.yml
-sed -i 's/      begin: 20001/      begin: 40001/' /opt/jlupin/platform2/start/configuration/main.yml
-sed -i 's/      end: 30000/      end: 50000/' /opt/jlupin/platform2/start/configuration/main.yml
-sed -i 's/      begin: 30001/      begin: 50001/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/      begin: 20001/      begin: 50001/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/      end: 30000/      end: 55000/' /opt/jlupin/platform2/start/configuration/main.yml
+sed -i 's/      begin: 30001/      begin: 55001/' /opt/jlupin/platform2/start/configuration/main.yml
 sed -i 's/      end: 40000/      end: 60000/' /opt/jlupin/platform2/start/configuration/main.yml
 sed -i 's/  NODE_1:/  NODE_2:/' /opt/jlupin/platform2/start/configuration/main.yml
 sed -i 's/    jlrmcPort: 9090/    jlrmcPort: 19090/' /opt/jlupin/platform2/start/configuration/main.yml
