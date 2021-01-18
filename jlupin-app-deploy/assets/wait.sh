@@ -7,6 +7,23 @@ show_progress()
   local spinstr='\|/-'
   local temp
 
+  echo -n "Tweaking system settings..."
+  while true; do 
+    sudo grep -i "done" /opt/.sys-setup &> /dev/null
+    if [[ "$?" -ne 0 ]]; then     
+      temp="${spinstr#?}"
+      printf " [%c]  " "${spinstr}"
+      spinstr=${temp}${spinstr%"${temp}"}
+      sleep "${delay}"
+      printf "\b\b\b\b\b\b"
+    else
+      break
+    fi
+  done
+  printf "    \b\b\b\b"
+  echo ""
+  echo "Done!"
+
   echo -n "Installing system dependencies..."
   while true; do 
     sudo grep -i "done" /opt/.sys-deps-installed &> /dev/null
