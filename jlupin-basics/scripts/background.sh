@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # echo "Installing system dependencies"
-apt update && apt install -y curl unzip htop
+apt update && apt install -y curl htop
 echo "done" >> /opt/.sys-deps-installed
 
 # echo "Downloading jlupin@1.6.1"
-curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform_webcontrol_upgrade_2.zip -o jlupin.zip
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform.tar.gz -o jlupin.tgz
 echo "done" >> /opt/.jlupin-downloaded
 
 # echo "Preparing JLupin"
 mkdir -p /opt/jlupin
-unzip jlupin.zip -d /opt/jlupin
+tar -zxvf jlupin.tgz -C /opt/jlupin
 chmod 750 /opt/jlupin/platform/start/start.sh
 chmod 750 /opt/jlupin/platform/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
