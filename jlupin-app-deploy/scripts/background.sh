@@ -10,7 +10,7 @@ echo "done" >> /opt/.jlupin-downloaded
 
 # echo "Preparing JLupin"
 mkdir -p /opt/jlupin
-unzip jlupin.zip -d /opt/jlupin
+tar -zxvf jlupin.tgz -C /opt/jlupin
 chmod 750 /opt/jlupin/platform/start/start.sh
 chmod 750 /opt/jlupin/platform/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
