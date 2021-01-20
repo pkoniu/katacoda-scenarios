@@ -1,9 +1,9 @@
 {
-  "title": "Introduction to JLupin Platform - demo with example application",
+  "title": "01 - JLupin demo with example app",
   "description": "",
   "icon": "assets/jlupin.png",
   "difficulty": "Beginner",
-  "time": "60 minutes",
+  "time": "30 minutes",
   "details": {
     "steps": [
       {

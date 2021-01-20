@@ -9,7 +9,7 @@ curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform.tar.gz -o jl
 echo "done" >> /opt/.jlupin-downloaded
 
 # echo "Downloading hello-world"
-curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.zip -o jlupin.tgz
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.zip -o hello-app.tgz
 echo "done" >> /opt/.app-downloaded
 
 # echo "Preparing JLupin"
