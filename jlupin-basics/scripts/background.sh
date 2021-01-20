@@ -9,7 +9,7 @@ curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform.tar.gz -o jl
 echo "done" >> /opt/.jlupin-downloaded
 
 # echo "Downloading hello-world"
-curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.zip -o hello-app.tgz
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.zip -o hello-app.zip
 echo "done" >> /opt/.app-downloaded
 
 # echo "Preparing JLupin"
@@ -31,6 +31,10 @@ echo "done" >> /opt/.jlupin-setup
 # echo "Starting JLupin platform"
 /opt/jlupin/platform/start/start.sh
 echo "done" >> /opt/.jlupin-started
+
+# echo "Starting example app"
+unzip hello-app.zip -d /opt/jlupin/platform/application
+/opt/jlupin/platform/start/control.sh microservice start hello-world
 
 # status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
 
