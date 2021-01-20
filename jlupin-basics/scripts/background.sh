@@ -32,13 +32,13 @@ echo "done" >> /opt/.jlupin-setup
 /opt/jlupin/platform/start/start.sh
 echo "done" >> /opt/.jlupin-started
 
-status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
+# status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
 
-while [[ "$status" != "200" ]]
-do
-  sleep 5
-  status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
-done
+# while [[ "$status" != "200" ]]
+# do
+#   sleep 5
+#   status=$(curl -w "%{http_code}\\n" -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Connection: keep-alive' --data-raw $'{\n  "value": "12",\n  "currency": "USD"\n}' http://localhost:8000/exchange/convert -s -o /dev/null)
+# done
 
 # echo "Finished"
-echo "done" >> /opt/.exchange-available
+# echo "done" >> /opt/.exchange-available

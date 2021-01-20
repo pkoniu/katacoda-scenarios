@@ -40,8 +40,8 @@ show_progress()
   echo -n "Starting jlupin platform..."
   spin_until "/opt/.jlupin-started"
 
-  echo -n "Waiting for example app to be available..."
-  spin_until "/opt/.exchange-available"
+  # echo -n "Waiting for example app to be available..."
+  # spin_until "/opt/.exchange-available"
 }
 
 show_progress
