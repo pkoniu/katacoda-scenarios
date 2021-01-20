@@ -35,6 +35,7 @@ echo "done" >> /opt/.jlupin-started
 # echo "Starting example app"
 unzip hello-app.zip -d /opt/jlupin/platform/application
 /opt/jlupin/platform/start/control.sh microservice start hello-world
+sleep 1
 /opt/jlupin/platform/start/control.sh microservice destroy currency-converter-eur
 /opt/jlupin/platform/start/control.sh microservice destroy currency-converter-gbp
 /opt/jlupin/platform/start/control.sh microservice destroy currency-converter-chf
