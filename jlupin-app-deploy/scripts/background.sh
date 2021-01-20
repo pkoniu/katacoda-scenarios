@@ -16,7 +16,6 @@ chmod 750 /opt/jlupin/platform/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers/admin.conf
 sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-eur/configuration.yml
-
 echo "done" >> /opt/.jlupin-setup
 
 # echo "Starting JLupin platform"
