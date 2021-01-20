@@ -7,37 +7,28 @@ Starting the CLI in interactive mode:
 ## Basic operations
 
 - List all microservices deployed on the platform
-`microservice list`
+`microservice list`{{execute}}
 
 - Check more detailed status of a specific microservice, e.g.:
-`microservice status exchange`
+`microservice status hello-world`{{execute}}
 
 - Restart specific microservice, e.g.:
-`microservice restart exchange`
+`microservice restart hello-world`{{execute}}
 
 - Stop specific microservice, e.g.:
-`microservice stop exchange`
+`microservice stop hello-world`{{execute}}
 
 - Start specific microservice, e.g.:
-`microservice start exchange`
+`microservice start hello-world`{{execute}}
 
 - Stop all microservices:
-`microservice stop *`
+`microservice stop *`{{execute}}
 
 - Start all microservices:
-`microservice start *`
+`microservice start *`{{execute}}
 
 - Quit the CLI
-`quit`
-
-- Checking status of the node:
-`node status`
-
-- Stopping the JLupin Platform (along with all running microservices):
-`node shutdown`
-
-- Force stop the JLuping Platform (along with all running microservices):
-`node terminate`
+`quit`{{execute}}
 
 ## Passing the commands to CLI
 
