@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sleep 4; wait.sh
+sleep 4; echo "Waiting for stable Katacoda environment..."; wait.sh

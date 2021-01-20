@@ -1,53 +1,32 @@
 #!/bin/bash
 
-# echo "Changing ulimits"
-sed -i -e '$aroot            soft    nofile          64500' /etc/security/limits.conf
-sed -i -e '$aroot            hard    nofile          64500' /etc/security/limits.conf
-sed -i -e '$aroot            soft    nproc           32768' /etc/security/limits.conf
-sed -i -e '$aroot            hard    nproc           32768' /etc/security/limits.conf
-sysctl -p /etc/security/limits.conf
-
-sed -i 's/#DefaultLimitNOFILE=/DefaultLimitNOFILE=64500/' /etc/systemd/system.conf
-sed -i 's/#DefaultLimitNPROC=/DefaultLimitNPROC=32768/' /etc/systemd/system.conf
-
-sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session
-sed -i -e 'session required pam_limits.so' /etc/pam.d/common-session-noninteractive
-ulimit -n 64500
-ulimit -u 32768
-
-echo "done" >> /opt/.sys-setup
-
 # echo "Installing system dependencies"
 apt update
-apt install -y curl unzip htop
+apt install -y curl htop
 echo "done" >> /opt/.sys-deps-installed
 
 # echo "Downloading jlupin@1.6.1"
-curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform_webcontrol_upgrade_2.zip -o jlupin.zip
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform2.tar.gz -o jlupin.tgz
 echo "done" >> /opt/.jlupin-downloaded
 
 # echo "Preparing JLupin"
 mkdir -p /opt/jlupin/platform1
-
-unzip jlupin.zip -d /opt/jlupin/platform1
+tar -zxvf jlupin.tgz -C /opt/jlupin/platform1
 mv /opt/jlupin/platform1/platform/* /opt/jlupin/platform1
 rm -rf /opt/jlupin/platform1/platform
 chmod 750 /opt/jlupin/platform1/start/start.sh
 chmod 750 /opt/jlupin/platform1/start/control.sh
-# echo 'user root root;' | cat - /opt/jlupin/platform/start/configuration/edge.conf | tee /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '1iuser root root;' /opt/jlupin/platform1/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform1/technical/nginx/linux/conf/servers/admin.conf
 sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform1/application/currency-converter-eur/configuration.yml
-
 echo "done" >> /opt/.jlupin1-setup
 
 mkdir -p /opt/jlupin/platform2
-unzip jlupin.zip -d /opt/jlupin/platform2
+tar -zxvf jlupin.tgz -C /opt/jlupin/platform2
 mv /opt/jlupin/platform2/platform/* /opt/jlupin/platform2
 rm -rf /opt/jlupin/platform2/platform
 chmod 750 /opt/jlupin/platform2/start/start.sh
 chmod 750 /opt/jlupin/platform2/start/control.sh
-# echo 'user root root;' | cat - /opt/jlupin/platform2/start/configuration/edge.conf | tee /opt/jlupin/platform2/start/configuration/edge.conf
 sed -i '1iuser root root;' /opt/jlupin/platform2/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform2/technical/nginx/linux/conf/servers/admin.conf
 
