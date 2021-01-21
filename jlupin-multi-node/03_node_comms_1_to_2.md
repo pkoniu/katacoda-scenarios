@@ -16,9 +16,9 @@ See the peers of NODE_1:
 `node peers`{{execute}}
 
 Expected result:
-![NODE_1 peers](assets/node_1_peers.png)
+<!-- ![NODE_1 peers](assets/node_1_peers.png) -->
 
 If everything went smoothly, you should be able to start the [exchange](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/) application on NODE_1 and get all the currency conversion results in the table:
-![Exchange on NODE_1 working](assets/node_1_exchange_working.png)
+<!-- ![Exchange on NODE_1 working](assets/node_1_exchange_working.png) -->
 
 Notice that we still don't have the required microservice started on NODE_1, jlupin uses internal communication and finds required microservice in the other node.
