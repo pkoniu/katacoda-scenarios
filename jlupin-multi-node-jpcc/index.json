@@ -13,16 +13,16 @@
         "text": "01_setup.md"
       },
       {
-        "title": "JPCC basics",
-        "text": "02_jpcc_basics.md"
+        "title": "JPCC user management",
+        "text": "02_jpcc_user_management.md"
       },
       {
-        "title": "JPCC connect NODE_1 to ZONE_1",
-        "text": "03_jpcc_connect_node_1.md"
+        "title": "JPCC zone management",
+        "text": "03_jpcc_zone_management.md"
       },
       {
-        "title": "JPCC connect NODE_2 to ZONE_1",
-        "text": "04_jpcc_connect_node_2.md"
+        "title": "JPCC inter-node connection",
+        "text": "04_jpcc_node_connection.md"
       }
     ],
     "assets": {
