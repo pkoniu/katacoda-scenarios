@@ -22,7 +22,7 @@ Further reading on zone management and possible commands are provided [here](htt
 
   `node connect localhost zone_a 19096`{{execute}}
 
-  ![Node connect NODE_1](assets/jpcc_node_connect_node_1.png)
+  ![Node connect NODE_1](assets/jpcc_node_connect_node_2.png)
 
 4. Check the nodes status again and notice the difference.
 
@@ -46,7 +46,7 @@ But before we start connecting the nodes, you can confirm on your own that there
 
   `zone connect zone_a NODE_1 zone_a NODE_2`{{execute}}
 
-  ![Connect NODE_1 -> NODE_2](assets/jpcc_node_connect_node_1.png)
+  ![Connect NODE_1 -> NODE_2](assets/jpcc_node1_connect_zone.png)
 
 3. Check the list of peers and notice what changed.
 
@@ -56,9 +56,9 @@ But before we start connecting the nodes, you can confirm on your own that there
 
 4. Connect `NODE_2` to `NODE_1`.
 
-  `zone connect zone_a NODE_1 zone_a NODE_2`{{execute}}
+  `zone connect zone_a NODE_2 zone_a NODE_1`{{execute}}
 
-  ![Connect NODE_2 -> NODE_1](assets/jpcc_node_connect_node_2.png)
+  ![Connect NODE_2 -> NODE_1](assets/jpcc_node2_connect_zone.png)
 
 5. Check the list of peers and notice what changed.
 

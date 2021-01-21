@@ -22,13 +22,17 @@ For the purpose of this scenario you'll need an user with complete admin privile
 
 2. Login to the console using `user_admin` credentials, which by default are: `user_admin/user_admin`.
 
-3. Create a user with login `admin`, role `MASTER_ADMIN` and your own password. Remember it! It'll be needed later.
+3. For simplicity, let's turn off verbose mode:
+
+  `verbose off`{{execute}}
+
+4. Create a user with login `admin`, role `MASTER_ADMIN` and your own password. Remember it! It'll be needed later.
 
   `user create admin MASTER_ADMIN`{{execute}}
 
   ![User create](assets/jpcc_user_create.png)
 
-4. Relog to the `admin` user.
+5. Relog to the `admin` user.
 
   `login`{{execute}}
 
