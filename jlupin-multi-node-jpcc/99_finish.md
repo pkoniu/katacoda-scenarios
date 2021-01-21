@@ -6,16 +6,14 @@ Thank you for taking part in the second part of our introduction to the JLupin p
 
 Today you had the chance to:
 - revise the knowledge from previous scenarios
-- add peer to a jlupin node
-- enable communication between microservices available on different nodes
+- learn concepts behind JPCC
+- learn to use JPCC's user, node and zone management commands
 
 ## Further reading
 
 - JLupin main web page: [click!](https://jlupin.io/)
 - JLupin platform documentation: [click!](https://jlupin.io/documentation/jlupin-platform-161)
-- JLupin CLI documentation: [click!](https://jlupin.io/documentation/jlupin-cli-console-161)
-- JLupin web console documentation: [click!](https://jlupin.io/documentation/jlupin-web-console-161)
-- JLupin platform admin guide for multi nodes deployment: [click!](https://jlupin.io/documentation/jlupin-platform-161/page/admin-deployment_plans-single_node.html)
+- JLupin plaform control center documentation: [click!](https://jlupin.io/documentation/jlupin-platform-control-center-161/page/getting_started.html)
 
 ## Feedback
 
