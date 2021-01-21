@@ -16,7 +16,7 @@ See the peers of NODE_1:
 `node peers`{{execute}}
 
 Expected result:
-<!-- ![NODE_1 peers](assets/node_1_peers.png) -->
+![NODE_1 peers](assets/node_1_peers.png)
 
 Quit the CLI:
 `quit`{{execute}}
@@ -32,7 +32,7 @@ Enter the command:
 `microservice list`{{execute}}
 
 Expected result:
-<!-- ![NODE_1 microservices](assets/node_1_missing_service.png) -->
+![NODE_1 microservices](assets/node_1_missing_service.png)
 
 Quit the CLI:
 `quit`{{execute}}
