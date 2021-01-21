@@ -1,13 +1,24 @@
-# Enabling communication between the nodes
+# Communication between nodes
 
-## Enabling the communication
+In JLupin the communication between peers is one directional. It means that in order to let NODE_1 and NODE_2 communicate with each other, you'll have to do it in two separate steps: first adding NODE_2 as NODE_1's peer and then vice versa.
 
-`/opt/jlupin/platform1/start/control.sh node peer add NODE_2 localhost 19090 19095 19096 19097`{{execute}}
+## NODE_1 -> NODE_2
 
-## Checking if nodes see each other
+Now let's focus on adding NODE_2 as NODE_1's peer. You can do it using the CLI.
 
-`/opt/jlupin/platform1/start/control.sh node peers`{{execute}}
+Start the CLI:
+`/opt/jlupin/platform1/start/control.sh`{{execute}}
 
-## Testing the application
+Enter the command:
+`node peer add NODE_2 localhost 19090 19095 19096 19097`{{execute}}
 
-[exchange app - deployed on NODE_1](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/)
+See the peers of NODE_1:
+`node peers`{{execute}}
+
+Expected result:
+![NODE_1 peers](assets/node_1_peers.png)
+
+If everything went smoothly, you should be able to start the [exchange](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/) application on NODE_1 and get all the currency conversion results in the table:
+![Exchange on NODE_1 working](assets/node_1_exchange_working.png)
+
+Notice that we still don't have the required microservice started on NODE_1, jlupin uses internal communication and finds required microservice in the other node.
