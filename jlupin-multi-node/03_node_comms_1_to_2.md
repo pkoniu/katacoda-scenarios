@@ -18,7 +18,21 @@ See the peers of NODE_1:
 Expected result:
 <!-- ![NODE_1 peers](assets/node_1_peers.png) -->
 
-If everything went smoothly, you should be able to start the [exchange](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/) application on NODE_1 and get all the currency conversion results in the table:
-<!-- ![Exchange on NODE_1 working](assets/node_1_exchange_working.png) -->
+Quit the CLI:
+`quit`{{execute}}
 
-Notice that we still don't have the required microservice started on NODE_1, jlupin uses internal communication and finds required microservice in the other node.
+If everything went smoothly, you should be able to start the [exchange](https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/exchange/) application on NODE_1 and get all the currency conversion results in the table:
+
+Notice that we still don't have the required microservice started on NODE_1, jlupin uses internal communication and finds required microservice in the other node. If you want to check that the missing microservice is still not running on NODE_1, you can do the following:
+
+Start the CLI:
+`/opt/jlupin/platform1/start/control.sh`{{execute}}
+
+Enter the command:
+`microservice list`{{execute}}
+
+Expected result:
+<!-- ![NODE_1 microservices](assets/node_1_missing_service.png) -->
+
+Quit the CLI:
+`quit`{{execute}}
