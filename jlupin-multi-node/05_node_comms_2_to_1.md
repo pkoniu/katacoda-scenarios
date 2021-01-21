@@ -16,7 +16,7 @@ See the peers of NODE_2:
 `node peers`{{execute}}
 
 Expected result:
-![NODE_2 peers](assets/node_2_peers.png)
+<!-- ![NODE_2 peers](assets/node_2_peers.png) -->
 
 If everything went smoothly, you should be able to start the [exchange](https://[[HOST_SUBDOMAIN]]-18000-[[KATACODA_HOST]].environments.katacoda.com/exchange/) application on NODE_2 and get all the currency conversion results in the table:
-![Exchange on NODE_2 working](assets/node_2_exchange_working.png)
+<!-- ![Exchange on NODE_2 working](assets/node_2_exchange_working.png) -->
