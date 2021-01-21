@@ -79,7 +79,7 @@ sed -i 's/  transmissionPort:  9096/  transmissionPort: 14096/' /opt/jlupin/plat
 sed -i "s/  externalPort: '8000'/  externalPort: '13000'/" /opt/jlupin/platform1/application/exchange/servlet_configuration.yml
 sed -i "s/  externalPort: '8888'/  externalPort: '13888'/" /opt/jlupin/platform1/application/webcontrol/servlet_configuration.yml
 
-sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform1/application/currency-converter-eur/configuration.yml
+# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform1/application/currency-converter-eur/configuration.yml
 
 echo "done" >> /opt/.jlupin1-setup
 
@@ -131,7 +131,7 @@ sed -i 's/  transmissionPort:  9096/  transmissionPort: 19096/' /opt/jlupin/plat
 sed -i "s/  externalPort: '8000'/  externalPort: '18000'/" /opt/jlupin/platform2/application/exchange/servlet_configuration.yml
 sed -i "s/  externalPort: '8888'/  externalPort: '18888'/" /opt/jlupin/platform2/application/webcontrol/servlet_configuration.yml
 
-sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform2/application/currency-converter-gbp/configuration.yml
+# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform2/application/currency-converter-gbp/configuration.yml
 
 echo "done" >> /opt/.jlupin2-setup
 
@@ -150,6 +150,8 @@ done
 # echo "Finished"
 echo "done" >> /opt/.exchange1-available
 
+/opt/jlupin/platform1/start/control.sh microservice stop currency-converter-eur
+
 # echo "Starting JLupin 2"
 /opt/jlupin/platform2/start/start.sh
 echo "done" >> /opt/.jlupin2-started
@@ -164,6 +166,8 @@ done
 
 # echo "Finished"
 echo "done" >> /opt/.exchange2-available
+
+/opt/jlupin/platform2/start/control.sh microservice stop currency-converter-gbp
 
 # echo "Preparing jpcc-core@1.6.1"
 unzip jpcc-core.zip -d /opt/jlupin

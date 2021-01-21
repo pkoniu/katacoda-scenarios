@@ -22,3 +22,30 @@ or
 or
 [webcontrol app - deployed on NODE_2](https://[[HOST_SUBDOMAIN]]-18888-[[KATACODA_HOST]].environments.katacoda.com/webcontrol/).
 
+`console`{{execute}}
+
+`zone list`{{execute}}
+
+`zone create zone_a`{{execute}}
+
+`cd ../zone_a`{{execute}}
+
+`zone list`{{execute}}
+
+`node connect localhost zone_a 14096`{{execute}}
+
+`zone list`{{execute}}
+
+`node connect localhost zone_a 19096`{{execute}}
+
+`zone list`{{execute}}
+
+`node status`{{execute}}
+
+`node peers`{{execute}}
+
+`zone connect zone_a NODE_1 zone_a NODE_2`{{execute}}
+
+`node peers`{{execute}}
+
+`zone connect zone_a NODE_2 zone_a NODE_1`{{execute}}
