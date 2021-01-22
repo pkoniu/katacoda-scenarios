@@ -39,6 +39,9 @@ sleep 1
 /opt/jlupin/platform/start/control.sh microservice destroy exchange
 /opt/jlupin/platform/start/control.sh microservice destroy channelMicroservice
 /opt/jlupin/platform/start/control.sh microservice destroy queueMicroservice
+echo "done" >> /opt/.jlupin-prepared
 
-echo "Finished"
-echo "done" >> /opt/.app-available
+# echo "Preparing project structure"
+curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.tar.gz -o hello-jlupin.tgz
+tar -zxvf hello-jlupin.tgz
+echo "done" >> /opt/.project-prepared

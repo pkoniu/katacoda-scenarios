@@ -31,17 +31,17 @@ show_progress()
   echo -n "Downloading jlupin@1.6.1..."
   spin_until "/opt/.jlupin-downloaded"
 
-  echo -n "Downloading example app..."
-  spin_until "/opt/.app-downloaded"
-
   echo -n "Preparing jlupin configuration..."
   spin_until "/opt/.jlupin-setup"
 
   echo -n "Starting jlupin platform..."
   spin_until "/opt/.jlupin-started"
 
-  echo -n "Waiting for example app to be available..."
-  spin_until "/opt/.app-available"
+  echo -n "Modifying jlupin platform..."
+  spin_until "/opt/.jlupin-prepared"
+
+  echo -n "Preparing project structure..."
+  spin_until "/opt/.project-prepared"
 }
 
 show_progress

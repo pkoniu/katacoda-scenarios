@@ -56,7 +56,6 @@
         &#x3C;jlupin.repackage.output.fileName&#x3E;${project.artifactId}-${project.version}.${project.packaging}
         &#x3C;/jlupin.repackage.output.fileName&#x3E;
     &#x3C;/properties&#x3E;
-
 &#x3C;/project&#x3E;
 </pre>
 
