@@ -30,7 +30,7 @@
         },
         {
           "file": "hello-jlupin.tgz",
-          "target": "/root"
+          "target": "/root/scenario"
         }
       ]
     },

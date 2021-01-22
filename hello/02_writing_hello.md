@@ -1,62 +1,62 @@
 # Writing microservice for JLupin platform
 
 <pre class="file" data-target="clipboard">
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+&#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;
+&#x3C;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>jlupin-platform-parent</artifactId>
-        <groupId>com.jlupin</groupId>
-        <version>1.6.1.0</version>
-    </parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&#x3E;
+    &#x3C;modelVersion&#x3E;4.0.0&#x3C;/modelVersion&#x3E;
+    &#x3C;parent&#x3E;
+        &#x3C;artifactId&#x3E;jlupin-platform-parent&#x3C;/artifactId&#x3E;
+        &#x3C;groupId&#x3E;com.jlupin&#x3C;/groupId&#x3E;
+        &#x3C;version&#x3E;1.6.1.0&#x3C;/version&#x3E;
+    &#x3C;/parent&#x3E;
 
-    <groupId>com.example</groupId>
-    <artifactId>hello-world</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    &#x3C;groupId&#x3E;com.example&#x3C;/groupId&#x3E;
+    &#x3C;artifactId&#x3E;hello-world&#x3C;/artifactId&#x3E;
+    &#x3C;packaging&#x3E;pom&#x3C;/packaging&#x3E;
+    &#x3C;version&#x3E;1.0-SNAPSHOT&#x3C;/version&#x3E;
 
-    <repositories>
-        <repository>
-            <id>jlupin-central</id>
-            <name>jlupin</name>
-            <url>http://support.jlupin.com/maven2/</url>
-        </repository>
-    </repositories>
+    &#x3C;repositories&#x3E;
+        &#x3C;repository&#x3E;
+            &#x3C;id&#x3E;jlupin-central&#x3C;/id&#x3E;
+            &#x3C;name&#x3E;jlupin&#x3C;/name&#x3E;
+            &#x3C;url&#x3E;http://support.jlupin.com/maven2/&#x3C;/url&#x3E;
+        &#x3C;/repository&#x3E;
+    &#x3C;/repositories&#x3E;
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jlupin-central</id>
-            <name>jlupin</name>
-            <url>http://support.jlupin.com/maven2/</url>
-        </pluginRepository>
-    </pluginRepositories>
+    &#x3C;pluginRepositories&#x3E;
+        &#x3C;pluginRepository&#x3E;
+            &#x3C;id&#x3E;jlupin-central&#x3C;/id&#x3E;
+            &#x3C;name&#x3E;jlupin&#x3C;/name&#x3E;
+            &#x3C;url&#x3E;http://support.jlupin.com/maven2/&#x3C;/url&#x3E;
+        &#x3C;/pluginRepository&#x3E;
+    &#x3C;/pluginRepositories&#x3E;
 
-    <modules>
-        <module>common-pojo</module>
-        <module>common-util</module>
-        <module>hello-world/implementation</module>
-        <module>integration-test</module>
-    </modules>
+    &#x3C;modules&#x3E;
+        &#x3C;module&#x3E;common-pojo&#x3C;/module&#x3E;
+        &#x3C;module&#x3E;common-util&#x3C;/module&#x3E;
+        &#x3C;module&#x3E;hello-world/implementation&#x3C;/module&#x3E;
+        &#x3C;module&#x3E;integration-test&#x3C;/module&#x3E;
+    &#x3C;/modules&#x3E;
 
-    <properties>
-        <main.dir>${project.basedir}/</main.dir>
-        <jlupin.deploy.skip>true</jlupin.deploy.skip>
+    &#x3C;properties&#x3E;
+        &#x3C;main.dir&#x3E;${project.basedir}/&#x3C;/main.dir&#x3E;
+        &#x3C;jlupin.deploy.skip&#x3E;true&#x3C;/jlupin.deploy.skip&#x3E;
 
-        <spring.boot.version>2.1.2.RELEASE</spring.boot.version>
+        &#x3C;spring.boot.version&#x3E;2.1.2.RELEASE&#x3C;/spring.boot.version&#x3E;
 
-        <maven.war.plugin.version>3.2.2</maven.war.plugin.version>
-        <maven.failsafe.plugin.version>2.20</maven.failsafe.plugin.version>
-        <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        &#x3C;maven.war.plugin.version&#x3E;3.2.2&#x3C;/maven.war.plugin.version&#x3E;
+        &#x3C;maven.failsafe.plugin.version&#x3E;2.20&#x3C;/maven.failsafe.plugin.version&#x3E;
+        &#x3C;maven.surefire.plugin.version&#x3E;2.20&#x3C;/maven.surefire.plugin.version&#x3E;
+        &#x3C;maven.compiler.source&#x3E;1.8&#x3C;/maven.compiler.source&#x3E;
+        &#x3C;maven.compiler.target&#x3E;1.8&#x3C;/maven.compiler.target&#x3E;
+        &#x3C;project.build.sourceEncoding&#x3E;UTF-8&#x3C;/project.build.sourceEncoding&#x3E;
 
-        <jlupin.repackage.output.fileName>${project.artifactId}-${project.version}.${project.packaging}
-        </jlupin.repackage.output.fileName>
-    </properties>
+        &#x3C;jlupin.repackage.output.fileName&#x3E;${project.artifactId}-${project.version}.${project.packaging}
+        &#x3C;/jlupin.repackage.output.fileName&#x3E;
+    &#x3C;/properties&#x3E;
 
-</project>
+&#x3C;/project&#x3E;
 </pre>
 
