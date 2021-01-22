@@ -25,7 +25,7 @@ sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize:
 echo "done" >> /opt/.jlupin-setup
 
 # echo "Starting JLupin platform"
-# /opt/jlupin/platform/start/start.sh
+/opt/jlupin/platform/start/start.sh
 echo "done" >> /opt/.jlupin-started
 
 # echo "Starting example app"
