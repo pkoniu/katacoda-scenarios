@@ -1,5 +1,180 @@
 # Writing microservice for JLupin platform
 
+## Finishing preparation
+
+<pre class="file" data-filename="hello-jlupin/additional-files/servlet-configuration.yml" data-target="replace">
+SERVERS:
+  HTTP:
+    type: spring_boot
+    httpPrimaryPort: -1
+    httpSecondaryPort: -1
+    waitForFinishExecuteAllRequests: true
+    waitToShutdownThreadsOnStop: 5000
+    springBootLoaderClassName: org.springframework.boot.loader.WarLauncher
+    contextName: /hello-world
+    isStartOnMainServerInitialize: true
+    httpStickySession: false
+    isLoadSimpleApplicationPropertiesBeforeStartup: true
+  TRANSMISSION:
+    readTimeout: 480000
+    isWaitForFinishExecuteAllRequests: false
+    waitToShutdownThreadsOnStop: 60000
+    backlog: 0
+    receiveBufferSize: 0
+    isReuseAddress: false
+    threadPoolSize: 2
+    isLogPeriodicOnDebug: true
+    isDestroyThreadOnTimeout: false
+    threadExecutingTimeOut: 3600000
+    isStartOnMainServerInitialize: true
+ENTRY_POINTS:
+  TRANSMISSION:
+    SERIALIZER:
+      producer: com.jlupin.impl.functional.supplier.serializer.JLupinJAVASerializerSupplierImpl
+PROPERTIES:
+  platformVersion: '1.6.1.0'
+  #jvmOptions1: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml -Dlogging.config=${microservice.dir}/log4j2.xml -agentlib:jdwp=transport=dt_socket,address=12998,server=y,suspend=n'
+  jvmOptions1: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml -Dlogging.config=${microservice.dir}/log4j2.xml' #jvmOptions_2 - default the same as jvmOptions_1
+  #jvmOptions2: '-Xms128M -Xmx256M -Dlog4j.configurationFile=${sys:microservice.dir}/log4j2.xml -Dlogging.config=${microservice.dir}/log4j2.xml'
+  externalPort: '8000'
+  version: '1.0-SNAPSHOT'
+  switchDelayTime: 0
+  connectionSocketTimeoutInMillis: 1000
+  readTimeoutInMillis: 30000
+  isKeepAlive: false
+  isOOBInline: false
+  isTcpNoDelay: false
+  isReuseAddress: false
+  sendBufferSize: 0
+  receiveBufferSize: 0
+  soLinger: 0
+  trafficClass: 0
+  #javaExecutablePath: 'c:\\jvm\\bin\\java.exe'
+  #additionalClassPath: 'c:\\temp\\*'
+  isStartOnMainServerInitialize: true
+  priorityStartOnMainServerInitialize: 4
+  waitForProcessInitResponseTimeInMillis: 90000
+  waitForProcessStartResponseTimeInMillis: 90000
+  waitForProcessDestroyResponseTimeInMillis: 30000
+  isArchiveOnStart: false
+  startLogMode: INFO
+  isInitErrorCauseWithNetworkInformation: true
+  isJmxEnabled: true
+  jmxOptions: '-Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false'
+  jmxPrimaryPort: -1
+  jmxSecondaryPort: -1
+  isExternalHealthcheck: false
+  externalHealthcheckURI: '/sampleURI/'
+  httpStickySessionCookieOptions: 'option1=value1'
+  checkAvailableScript: 'function isAvailable(checkResponseTimeInMillis, jrmcActiveThreads, jrmcMaxThreads,
+                                              queueActiveThreads, queueMaxThreads, servletActiveThreads, servletMaxThreads,
+                           	                  jvmMaxMemoryInBytes, jvmTotalMemoryInBytes, jvmFreeMemoryInBytes,
+                           	                  jvmProcessCpuLoadInPercentage, userAvailableFlag) {
+                           var isAvailableByUser = Boolean(userAvailableFlag);
+                           if(checkResponseTimeInMillis > 20000 || !isAvailableByUser) {
+                              return false;
+                           }
+                           return true;
+                         }'
+INITIALIZING_LOGGER:
+  #directoryPath: '/logs/server'
+  #fileName: 'file_name'
+  fileExtension: 'log'
+  fileSizeInMB: 20
+  maxFiles: 10
+MEMORY_ERRORS:
+  isRestartOnError: true
+  howManyTimes: 4
+  percentageGrowth: 15
+  isHeapDump: true
+THREAD_POOLS:
+#THREAD_POOL_1:
+#  size: 8
+#  waitingTimeForTasksCompletionInMillis: 10000
+#THREAD_POOL_2:
+#  size: 8
+#  waitingTimeForTasksCompletionInMillis: 10000
+</pre>
+
+<pre class="file" data-filename="hello-jlupin/additional-files/log4j2.xml" data-target="replace">
+&#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;
+
+&#x3C;!-- ===================================================================== --&#x3E;
+&#x3C;!--                                                                       --&#x3E;
+&#x3C;!--  Log4j2 Configuration                                                  --&#x3E;
+&#x3C;!--                                                                       --&#x3E;
+&#x3C;!-- ===================================================================== --&#x3E;
+
+&#x3C;!--
+   | For more configuration information and examples see the Apache Log4j2
+   | website: https://logging.apache.org/log4j/2.x/index.html
+--&#x3E;
+
+&#x3C;Configuration status="WARN" dest="errors/hello-world_log4j2_status.log"&#x3E;
+    &#x3C;!-- Extract log directory and file name into variables --&#x3E;
+    &#x3C;Properties&#x3E;
+        &#x3C;Property name="logDirectory"&#x3E;${sys:platform.dir}/logs/microservice/${sys:microservice.name}&#x3C;/Property&#x3E;
+        &#x3C;Property name="logFileName"&#x3E;microservice&#x3C;/Property&#x3E;
+    &#x3C;/Properties&#x3E;
+
+    &#x3C;Appenders&#x3E;
+        &#x3C;!-- RollingFileAppender configured to role every day --&#x3E;
+        &#x3C;RollingFile name="FILE"&#x3E;
+            &#x3C;FileName&#x3E;${logDirectory}/${logFileName}.log&#x3C;/FileName&#x3E;
+            &#x3C;FilePattern&#x3E;${logDirectory}/${logFileName}.%d{yyyy-MM-dd}.log&#x3C;/FilePattern&#x3E;
+
+            &#x3C;!-- Compress log files to gzip --&#x3E;
+            &#x3C;!-- More configuration https://logging.apache.org/log4j/2.x/manual/appenders.html#DefaultRolloverStrategy --&#x3E;
+            &#x3C;!-- &#x3C;FilePattern&#x3E;/.%d{yyyy-MM-dd}.log.gz&#x3C;/FilePattern&#x3E; --&#x3E;
+
+            &#x3C;!-- Do not truncate file --&#x3E;
+            &#x3C;Append&#x3E;true&#x3C;/Append&#x3E;
+
+            &#x3C;!-- The default pattern: Date Priority [Category] (Thread) Message\n --&#x3E;
+            &#x3C;PatternLayout pattern="%d %-5p [%c] (%t) %m%n"/&#x3E;
+
+            &#x3C;Policies&#x3E;
+                &#x3C;!-- Rollover every microservice start - very useful for debugging --&#x3E;
+                &#x3C;!-- &#x3C;OnStartupTriggeringPolicy /&#x3E; --&#x3E;
+
+                &#x3C;!-- Rollover at the top of each day --&#x3E;
+                &#x3C;TimeBasedTriggeringPolicy interval="1" modulate="true"/&#x3E;
+
+                &#x3C;!-- Rollover if file size is greater than 200 MB --&#x3E;
+                &#x3C;!-- &#x3C;SizeBasedTriggeringPolicy size="200 MB"/&#x3E; --&#x3E;
+            &#x3C;/Policies&#x3E;
+            &#x3C;CreateOnDemand&#x3E;true&#x3C;/CreateOnDemand&#x3E;
+
+            &#x3C;!-- Keep last 10 log files --&#x3E;
+            &#x3C;!-- More configuration https://logging.apache.org/log4j/2.x/manual/appenders.html#DefaultRolloverStrategy --&#x3E;
+            &#x3C;!-- &#x3C;DefaultRolloverStrategy max="10" /&#x3E; --&#x3E;
+        &#x3C;/RollingFile&#x3E;
+
+        &#x3C;!-- AsyncAppender for high performance --&#x3E;
+        &#x3C;Async name="ASYNC_FILE"&#x3E;
+            &#x3C;BufferSize&#x3E;1000&#x3C;/BufferSize&#x3E;
+            &#x3C;AppenderRef ref="FILE"/&#x3E;
+        &#x3C;/Async&#x3E;
+
+        &#x3C;Console name="STDOUT" target="SYSTEM_OUT"&#x3E;
+            &#x3C;PatternLayout pattern="%d %-5p [%c] (%t) %m%n"/&#x3E;
+        &#x3C;/Console&#x3E;
+
+        &#x3C;Async name="ASYNC_STDOUT"&#x3E;
+            &#x3C;BufferSize&#x3E;1000&#x3C;/BufferSize&#x3E;
+            &#x3C;AppenderRef ref="STDOUT"/&#x3E;
+        &#x3C;/Async&#x3E;
+    &#x3C;/Appenders&#x3E;
+
+    &#x3C;Loggers&#x3E;
+        &#x3C;!-- Setup for root logger with AsyncAppender --&#x3E;
+        &#x3C;Root level="info"&#x3E;
+            &#x3C;AppenderRef ref="ASYNC_FILE"/&#x3E;
+        &#x3C;/Root&#x3E;
+    &#x3C;/Loggers&#x3E;
+&#x3C;/Configuration&#x3E;
+</pre>
+
 ## Implementing hello world
 
 <pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
@@ -56,63 +231,3 @@ public class HelloWorldSpringConfiguration {
     }
 }
 </pre>
-
-<!-- <pre class="file" data-target="clipboard">
-&#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;
-&#x3C;project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&#x3E;
-    &#x3C;modelVersion&#x3E;4.0.0&#x3C;/modelVersion&#x3E;
-    &#x3C;parent&#x3E;
-        &#x3C;artifactId&#x3E;jlupin-platform-parent&#x3C;/artifactId&#x3E;
-        &#x3C;groupId&#x3E;com.jlupin&#x3C;/groupId&#x3E;
-        &#x3C;version&#x3E;1.6.1.0&#x3C;/version&#x3E;
-    &#x3C;/parent&#x3E;
-
-    &#x3C;groupId&#x3E;com.example&#x3C;/groupId&#x3E;
-    &#x3C;artifactId&#x3E;hello-world&#x3C;/artifactId&#x3E;
-    &#x3C;packaging&#x3E;pom&#x3C;/packaging&#x3E;
-    &#x3C;version&#x3E;1.0-SNAPSHOT&#x3C;/version&#x3E;
-
-    &#x3C;repositories&#x3E;
-        &#x3C;repository&#x3E;
-            &#x3C;id&#x3E;jlupin-central&#x3C;/id&#x3E;
-            &#x3C;name&#x3E;jlupin&#x3C;/name&#x3E;
-            &#x3C;url&#x3E;http://support.jlupin.com/maven2/&#x3C;/url&#x3E;
-        &#x3C;/repository&#x3E;
-    &#x3C;/repositories&#x3E;
-
-    &#x3C;pluginRepositories&#x3E;
-        &#x3C;pluginRepository&#x3E;
-            &#x3C;id&#x3E;jlupin-central&#x3C;/id&#x3E;
-            &#x3C;name&#x3E;jlupin&#x3C;/name&#x3E;
-            &#x3C;url&#x3E;http://support.jlupin.com/maven2/&#x3C;/url&#x3E;
-        &#x3C;/pluginRepository&#x3E;
-    &#x3C;/pluginRepositories&#x3E;
-
-    &#x3C;modules&#x3E;
-        &#x3C;module&#x3E;common-pojo&#x3C;/module&#x3E;
-        &#x3C;module&#x3E;common-util&#x3C;/module&#x3E;
-        &#x3C;module&#x3E;hello-world/implementation&#x3C;/module&#x3E;
-        &#x3C;module&#x3E;integration-test&#x3C;/module&#x3E;
-    &#x3C;/modules&#x3E;
-
-    &#x3C;properties&#x3E;
-        &#x3C;main.dir&#x3E;${project.basedir}/&#x3C;/main.dir&#x3E;
-        &#x3C;jlupin.deploy.skip&#x3E;true&#x3C;/jlupin.deploy.skip&#x3E;
-
-        &#x3C;spring.boot.version&#x3E;2.1.2.RELEASE&#x3C;/spring.boot.version&#x3E;
-
-        &#x3C;maven.war.plugin.version&#x3E;3.2.2&#x3C;/maven.war.plugin.version&#x3E;
-        &#x3C;maven.failsafe.plugin.version&#x3E;2.20&#x3C;/maven.failsafe.plugin.version&#x3E;
-        &#x3C;maven.surefire.plugin.version&#x3E;2.20&#x3C;/maven.surefire.plugin.version&#x3E;
-        &#x3C;maven.compiler.source&#x3E;1.8&#x3C;/maven.compiler.source&#x3E;
-        &#x3C;maven.compiler.target&#x3E;1.8&#x3C;/maven.compiler.target&#x3E;
-        &#x3C;project.build.sourceEncoding&#x3E;UTF-8&#x3C;/project.build.sourceEncoding&#x3E;
-
-        &#x3C;jlupin.repackage.output.fileName&#x3E;${project.artifactId}-${project.version}.${project.packaging}
-        &#x3C;/jlupin.repackage.output.fileName&#x3E;
-    &#x3C;/properties&#x3E;
-&#x3C;/project&#x3E;
-</pre> -->
-
