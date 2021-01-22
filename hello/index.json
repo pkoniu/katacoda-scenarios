@@ -13,16 +13,12 @@
         "text": "01_setup.md"
       },
       {
-        "title": "Exchange application",
-        "text": "02_hello_world.md"
+        "title": "Writing hello",
+        "text": "02_writing_hello.md"
       },
       {
-        "title": "Webcontrol application",
-        "text": "03_webcontrol.md"
-      },
-      {
-        "title": "Basic control CLI commands",
-        "text": "04_control_cli.md"
+        "title": "Deployinhg hello",
+        "text": "03_deploying_hello.md"
       }
     ],
     "assets": {

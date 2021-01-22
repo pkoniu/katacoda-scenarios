@@ -8,10 +8,6 @@ echo "done" >> /opt/.sys-deps-installed
 curl https://kacdab-download.s3.eu-central-1.amazonaws.com/platform2.tar.gz -o jlupin.tgz
 echo "done" >> /opt/.jlupin-downloaded
 
-# echo "Downloading hello-world"
-curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.zip -o hello-app.zip
-echo "done" >> /opt/.app-downloaded
-
 # echo "Preparing JLupin"
 mkdir -p /opt/jlupin
 tar -zxvf jlupin.tgz -C /opt/jlupin
@@ -43,14 +39,6 @@ sleep 1
 /opt/jlupin/platform/start/control.sh microservice destroy exchange
 /opt/jlupin/platform/start/control.sh microservice destroy channelMicroservice
 /opt/jlupin/platform/start/control.sh microservice destroy queueMicroservice
-
-status=$(curl -w "%{http_code}\\n" -H 'Connection: keep-alive' http://localhost:8000/hello-world/greeting?name=test -s -o /dev/null)
-
-while [[ "$status" != "200" ]]
-do
-  sleep 3
-  status=$(curl -w "%{http_code}\\n" -H 'Connection: keep-alive' http://localhost:8000/hello-world/greeting?name=test -s -o /dev/null)
-done
 
 echo "Finished"
 echo "done" >> /opt/.app-available
