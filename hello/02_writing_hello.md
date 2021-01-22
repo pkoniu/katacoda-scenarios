@@ -1,6 +1,22 @@
 # Writing microservice for JLupin platform
 
-<pre class="file" data-target="clipboard">
+<pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
+package com.example;
+
+import com.example.configuration.HelloWorldSpringConfiguration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootApplicationStarter {
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(HelloWorldSpringConfiguration.class, args);
+    }
+}
+</pre>
+
+
+<!-- <pre class="file" data-target="clipboard">
 &#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;
 &#x3C;project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -57,5 +73,5 @@
         &#x3C;/jlupin.repackage.output.fileName&#x3E;
     &#x3C;/properties&#x3E;
 &#x3C;/project&#x3E;
-</pre>
+</pre> -->
 

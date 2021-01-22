@@ -17,7 +17,7 @@
         "text": "02_writing_hello.md"
       },
       {
-        "title": "Deployinhg hello",
+        "title": "Deploying hello",
         "text": "03_deploying_hello.md"
       }
     ],
@@ -42,7 +42,10 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal"
+    "uieditorpath": "/root/scenario/project",
+    "showide": true,
+    "idePort": 23000,
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "openjdk:15"
