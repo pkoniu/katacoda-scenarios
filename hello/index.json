@@ -29,7 +29,7 @@
           "chmod": "+x"
         },
         {
-          "file": "hello-jlupin-empty.tgz",
+          "file": "hello-jlupin.zip",
           "target": "/root/scenario"
         }
       ]

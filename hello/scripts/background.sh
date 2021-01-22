@@ -43,5 +43,5 @@ echo "done" >> /opt/.jlupin-prepared
 
 # echo "Preparing project structure"
 mkdir -p /root/scenario/project
-tar -zxvf /root/scenario/hello-jlupin-empty.tgz -C /root/scenario/project/
+unzip /root/scenario/hello-jlupin.zip -d /root/scenario/project/
 echo "done" >> /opt/.project-prepared
