@@ -11,7 +11,7 @@ SERVERS:
     waitForFinishExecuteAllRequests: true
     waitToShutdownThreadsOnStop: 5000
     springBootLoaderClassName: org.springframework.boot.loader.WarLauncher
-    contextName: /hello-world
+    contextName: /example
     isStartOnMainServerInitialize: true
     httpStickySession: false
     isLoadSimpleApplicationPropertiesBeforeStartup: true

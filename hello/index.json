@@ -49,7 +49,7 @@
     "uieditorpath": "/root/scenario/project",
     "showide": true,
     "idePort": 23000,
-    "uilayout": "terminal"
+    "uilayout": "editor-terminal"
   },
   "backend": {
     "imageid": "ubuntu"
