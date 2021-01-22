@@ -1,5 +1,7 @@
 # Writing microservice for JLupin platform
 
+## Implementing hello world
+
 <pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
 package com.example;
 
@@ -15,6 +17,45 @@ public class SpringBootApplicationStarter {
 }
 </pre>
 
+<pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/controller/GreetingController.java" data-target="replace">
+package com.example.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class GreetingController {
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") final String name, final Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
+    }
+}
+</pre>
+
+<pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/configuration/HelloWorldSpringConfiguration.java" data-target="replace">
+package com.example.configuration;
+
+import com.jlupin.impl.client.util.JLupinClientUtil;
+import com.jlupin.interfaces.client.delegator.JLupinDelegator;
+import com.jlupin.interfaces.common.enums.PortType;
+import com.jlupin.servlet.monitor.annotation.EnableJLupinSpringBootServletMonitor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.example")
+@EnableJLupinSpringBootServletMonitor
+public class HelloWorldSpringConfiguration {
+    @Bean
+    public JLupinDelegator getJLupinDelegator() {
+        return JLupinClientUtil.generateInnerMicroserviceLoadBalancerDelegator(PortType.JLRMC);
+    }
+}
+</pre>
 
 <!-- <pre class="file" data-target="clipboard">
 &#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;

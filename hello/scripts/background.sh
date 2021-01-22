@@ -44,4 +44,5 @@ echo "done" >> /opt/.jlupin-prepared
 # echo "Preparing project structure"
 mkdir -p /root/scenario/project
 unzip /root/scenario/hello-jlupin.zip -d /root/scenario/project/
+rm -rf /root/scenario/project/__MACOSX
 echo "done" >> /opt/.project-prepared
