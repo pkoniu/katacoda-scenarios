@@ -46,9 +46,6 @@
     }
   },
   "environment": {
-    "uieditorpath": "/root/scenario/project",
-    "showide": true,
-    "idePort": 23000,
     "uilayout": "editor-terminal"
   },
   "backend": {
