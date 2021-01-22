@@ -17,8 +17,12 @@
         "text": "02_writing_hello.md"
       },
       {
+        "title": "Compiling hello",
+        "text": "03_compiling_hello.md"
+      },
+      {
         "title": "Deploying hello",
-        "text": "03_deploying_hello.md"
+        "test": "04_deploying_hello.md"
       }
     ],
     "assets": {
