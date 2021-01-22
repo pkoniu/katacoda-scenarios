@@ -42,7 +42,6 @@ sleep 1
 echo "done" >> /opt/.jlupin-prepared
 
 # echo "Preparing project structure"
-curl https://kacdab-download.s3.eu-central-1.amazonaws.com/hello-world.tar.gz -o hello-jlupin.tgz
 mkdir -p /root/scenario/project
-tar -zxvf hello-jlupin.tgz -C /root/scenario/project/
+tar -zxvf hello-jlupin-empty.tgz -C /root/scenario/project/
 echo "done" >> /opt/.project-prepared
