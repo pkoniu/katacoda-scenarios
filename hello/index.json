@@ -27,6 +27,10 @@
           "file": "wait.sh",
           "target": "/usr/local/bin/",
           "chmod": "+x"
+        },
+        {
+          "file": "hello-jlupin.tgz",
+          "target": "/root/hello-jlupin.tgz"
         }
       ]
     },
