@@ -42,12 +42,12 @@
     }
   },
   "environment": {
-    "uieditorpath": "/root",
+    "uieditorpath": "/root/scenario/project",
     "showide": true,
     "idePort": 23000,
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "openjdk:15"
+    "imageid": "ubuntu"
   }
 }
