@@ -96,7 +96,7 @@ THREAD_POOLS:
 #  waitingTimeForTasksCompletionInMillis: 10000
 </pre>
 
-<pre class="file" data-filename="hello-jlupin/additional-files/log4j2.xml" data-target="replace">
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/log4j2.xml" data-target="replace">
 &#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;
 
 &#x3C;!-- ===================================================================== --&#x3E;
@@ -177,7 +177,7 @@ THREAD_POOLS:
 
 ## Implementing hello world
 
-<pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
 package com.example;
 
 import com.example.configuration.HelloWorldSpringConfiguration;
@@ -192,7 +192,7 @@ public class SpringBootApplicationStarter {
 }
 </pre>
 
-<pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/controller/GreetingController.java" data-target="replace">
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/controller/GreetingController.java" data-target="replace">
 package com.example.controller;
 
 import org.springframework.stereotype.Controller;
@@ -210,7 +210,7 @@ public class GreetingController {
 }
 </pre>
 
-<pre class="file" data-filename="hello-jlupin/implementation/src/main/java/com/example/configuration/HelloWorldSpringConfiguration.java" data-target="replace">
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/configuration/HelloWorldSpringConfiguration.java" data-target="replace">
 package com.example.configuration;
 
 import com.jlupin.impl.client.util.JLupinClientUtil;
