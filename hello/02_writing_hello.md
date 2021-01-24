@@ -2,9 +2,11 @@
 
 JLupin Platform supports creating web application with use of servlet containers. For this Spring Boot is used. Application created this way is also a microservice but with exposed full http API.
 
+For the purpose of this scenario and simplicity, there's already everything configured on the server, including required project's structure. Full description of the recommended structure is available [here](https://jlupin.io/documentation/continuous-delivery-maven-plugin-161/page/recommended_structure-overview.html).
+
 ## Creating and opening a new file in Katacoda
 
-Let's make that you have a clear grasp of using katacoda's own code editor, that should be available on your right and look exactly like on the screenshot below.
+Let's make sure that you have a clear understanding of katacoda's own code editor, that should be available on your right and look exactly like on the screenshot below.
 
 ![Katacoda editor](assets/katacoda-editor.png)
 
@@ -28,7 +30,13 @@ Great! One of the files for the new microservice is already done, only couple mo
 
 ![New file with content](assets/copy-post.png)
 
-## Finishing preparation
+## Required microservice files
+
+Create following files in proper locations that are described on top of every file.
+
+### /root/scenario/project/hello-jlupin/additional-files/servlet-configuration.yml
+
+This is the default servlet configuration without any changes to default values. Full description and meaning of each field is available [here](https://jlupin.io/documentation/jlupin-platform-161/page/architecture-microservice-servlet_configuration_yml.html)
 
 <pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/servlet-configuration.yml" data-target="replace">
 SERVERS:
@@ -124,6 +132,8 @@ THREAD_POOLS:
 #  waitingTimeForTasksCompletionInMillis: 10000
 </pre>
 
+### /root/scenario/project/hello-jlupin/additional-files/log4j2.xml
+
 <pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/log4j2.xml" data-target="replace">
 &#x3C;?xml version="1.0" encoding="UTF-8"?&#x3E;
 
@@ -203,7 +213,9 @@ THREAD_POOLS:
 &#x3C;/Configuration&#x3E;
 </pre>
 
-## Implementing hello world
+### /root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java
+
+The following files implement a basic `hello-world` type of service, that once deployed on jlupin platform, will respond with a proper message.
 
 <pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
 package com.example;
@@ -215,10 +227,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootApplicationStarter {
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(HelloWorldSpringConfiguration.class, args);
+        SpringApplication.run(HelloJlupinSpringConfiguration.class, args);
     }
 }
 </pre>
+
+### /root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/controller/GreetingController.java
 
 <pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/controller/GreetingController.java" data-target="replace">
 package com.example.controller;
@@ -231,14 +245,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GreetingController {
     @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") final String name, final Model model) {
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="jlupin") final String name, final Model model) {
         model.addAttribute("name", name);
         return "greeting";
     }
 }
 </pre>
 
-<pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/configuration/HelloWorldSpringConfiguration.java" data-target="replace">
+### /root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/configuration/HelloJlupinSpringConfiguration.java
+
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/configuration/HelloJlupinSpringConfiguration.java" data-target="replace">
 package com.example.configuration;
 
 import com.jlupin.impl.client.util.JLupinClientUtil;
@@ -252,7 +268,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("com.example")
 @EnableJLupinSpringBootServletMonitor
-public class HelloWorldSpringConfiguration {
+public class HelloJlupinSpringConfiguration {
     @Bean
     public JLupinDelegator getJLupinDelegator() {
         return JLupinClientUtil.generateInnerMicroserviceLoadBalancerDelegator(PortType.JLRMC);
