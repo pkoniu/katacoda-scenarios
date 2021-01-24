@@ -1,5 +1,33 @@
 # Writing microservice for JLupin platform
 
+JLupin Platform supports creating web application with use of servlet containers. For this Spring Boot is used. Application created this way is also a microservice but with exposed full http API.
+
+## Creating and opening a new file in Katacoda
+
+Let's make that you have a clear grasp of using katacoda's own code editor, that should be available on your right and look exactly like on the screenshot below.
+
+![Katacoda editor](assets/katacoda-editor.png)
+
+In order to create a new file, you have to use the tree editor and find file's location. If you have it, you can open the context menu using right mouse button and select "New file". In this case you're going to create a file named `servlet-properties.yml` in `/root/scenario/project/hello-jlupin/additional-files`.
+
+![New file](assets/editor-tree-view.png)
+
+A popup should appear asking you for the file name.
+
+![New file name](assets/editor-new-file.png)
+
+This operation could take a few seconds and force the tree view to refresh, thus collapsing all open folders. Now, open the file, it should be empty.
+
+![New empty file](assets/copy-pre.png)
+
+Find the code snippet of the file that you are currently creating and press the button in the upper right corner to copy file's content to the opened file.
+
+![Copy to clipboard](assets/copy-to-editor.png)
+
+Great! One of the files for the new microservice is already done, only couple more to go.
+
+![New file with content](assets/copy-post.png)
+
 ## Finishing preparation
 
 <pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/servlet-configuration.yml" data-target="replace">
