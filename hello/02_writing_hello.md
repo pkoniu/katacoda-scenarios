@@ -2,7 +2,7 @@
 
 ## Finishing preparation
 
-<pre class="file" data-filename="hello-jlupin/additional-files/servlet-configuration.yml" data-target="replace">
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/servlet-configuration.yml" data-target="replace">
 SERVERS:
   HTTP:
     type: spring_boot
