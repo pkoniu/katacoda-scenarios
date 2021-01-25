@@ -12,4 +12,4 @@ More on that command can be read [here](https://jlupin.io/documentation/continuo
 
 If every required file was created correctly, you should see in the terminal that the process exited with success:
 
-![Maven package](assets/maven-package.png)
+![Maven package](assets/mvn-package.png)

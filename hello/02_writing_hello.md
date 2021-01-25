@@ -47,7 +47,7 @@ SERVERS:
     waitForFinishExecuteAllRequests: true
     waitToShutdownThreadsOnStop: 5000
     springBootLoaderClassName: org.springframework.boot.loader.WarLauncher
-    contextName: /example
+    contextName: /hello-jlupin
     isStartOnMainServerInitialize: true
     httpStickySession: false
     isLoadSimpleApplicationPropertiesBeforeStartup: true
