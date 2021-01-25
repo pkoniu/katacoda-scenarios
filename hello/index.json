@@ -13,16 +13,20 @@
         "text": "01_setup.md"
       },
       {
-        "title": "Writing hello",
+        "title": "Writing new application",
         "text": "02_writing_hello.md"
       },
       {
-        "title": "Compiling hello",
+        "title": "Compiling new application",
         "text": "03_compiling_hello.md"
       },
       {
-        "title": "Deploying hello",
-        "test": "04_deploying_hello.md"
+        "title": "Deploying new application",
+        "text": "04_deploying_hello.md"
+      },
+      {
+        "title": "Testing new application",
+        "text": "05_testing_hello.md"
       }
     ],
     "assets": {
