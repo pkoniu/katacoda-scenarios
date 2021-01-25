@@ -4,4 +4,8 @@ Now visit the following link, to see your application in action: [hello jlupin!]
 
 You can also check application's status with the control CLI:
 
-`/opt/jlupin/platform/start/control.sh microservice status`
+`/opt/jlupin/platform/start/control.sh microservice status hello-jlupin`{{execute}}
+
+You should see your app's PID and status:
+
+![Application status](assets/app-status.png)

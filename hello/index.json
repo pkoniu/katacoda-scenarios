@@ -27,6 +27,10 @@
       {
         "title": "Testing new application",
         "text": "05_testing_hello.md"
+      },
+      {
+        "title": "Altenative deployment process",
+        "text": "06_deploy_alternative.md"
       }
     ],
     "assets": {
