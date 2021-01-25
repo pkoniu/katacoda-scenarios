@@ -275,3 +275,18 @@ public class HelloJlupinSpringConfiguration {
     }
 }
 </pre>
+
+### /root/scenario/project/hello-jlupin/implementation/src/main/resources/templates/greeting.html
+
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/resources/templates/greeting.html">
+&#x3C;!DOCTYPE HTML&#x3E;
+&#x3C;html xmlns:th="http://www.thymeleaf.org"&#x3E;
+&#x3C;head&#x3E;
+  &#x3C;title&#x3E;Hello JLupin!&#x3C;/title&#x3E;
+  &#x3C;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+&#x3C;p th:text="'Hello, ' + ${name} + '!'" /&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;
+</pre>
