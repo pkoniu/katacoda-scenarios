@@ -6,4 +6,6 @@ First one, the simpler one, consists only of a single step. All you need to do, 
 
 Naturally it's possible to deploy to a remote location as well, you can find more information on that [here](https://jlupin.io/documentation/continuous-delivery-maven-plugin-161/page/commands-deploy.html).
 
-`mvn package jlupin-platform:deploy@jlupin-deploy`{{execute}}
+`mvn com.jlupin:jlupin-platform-maven-plugin:1.6.1.0:deploy`{{execute}}
+
+After a couple of seconds, you should see a message that the operation finished successfully.

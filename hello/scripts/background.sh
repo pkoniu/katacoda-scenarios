@@ -15,13 +15,13 @@ chmod 750 /opt/jlupin/platform/start/start.sh
 chmod 750 /opt/jlupin/platform/start/control.sh
 sed -i '1iuser root root;' /opt/jlupin/platform/start/configuration/edge.conf
 sed -i '/ssl/ s/^#*/#/g' /opt/jlupin/platform/technical/nginx/linux/conf/servers/admin.conf
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-eur/configuration.yml
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-gbp/configuration.yml
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-chf/configuration.yml
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/exchange-rates/configuration.yml
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/exchange/servlet_configuration.yml
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/channelMicroservice/configuration.yml
-# sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/queueMicroservice/configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-eur/configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-gbp/configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/currency-converter-chf/configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/exchange-rates/configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/exchange/servlet_configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/channelMicroservice/configuration.yml
+sed -i 's/  isStartOnMainServerInitialize: true/  isStartOnMainServerInitialize: false/' /opt/jlupin/platform/application/queueMicroservice/configuration.yml
 echo "done" >> /opt/.jlupin-setup
 
 # echo "Starting JLupin platform"
@@ -29,16 +29,13 @@ echo "done" >> /opt/.jlupin-setup
 echo "done" >> /opt/.jlupin-started
 
 # echo "Starting example app"
-unzip hello-app.zip -d /opt/jlupin/platform/application
-# /opt/jlupin/platform/start/control.sh microservice start hello-world
-# sleep 1
-# /opt/jlupin/platform/start/control.sh microservice destroy currency-converter-eur
-# /opt/jlupin/platform/start/control.sh microservice destroy currency-converter-gbp
-# /opt/jlupin/platform/start/control.sh microservice destroy currency-converter-chf
-# /opt/jlupin/platform/start/control.sh microservice destroy exchange-rates
-# /opt/jlupin/platform/start/control.sh microservice destroy exchange
-# /opt/jlupin/platform/start/control.sh microservice destroy channelMicroservice
-# /opt/jlupin/platform/start/control.sh microservice destroy queueMicroservice
+/opt/jlupin/platform/start/control.sh microservice destroy currency-converter-eur
+/opt/jlupin/platform/start/control.sh microservice destroy currency-converter-gbp
+/opt/jlupin/platform/start/control.sh microservice destroy currency-converter-chf
+/opt/jlupin/platform/start/control.sh microservice destroy exchange-rates
+/opt/jlupin/platform/start/control.sh microservice destroy exchange
+/opt/jlupin/platform/start/control.sh microservice destroy channelMicroservice
+/opt/jlupin/platform/start/control.sh microservice destroy queueMicroservice
 echo "done" >> /opt/.jlupin-prepared
 
 # echo "Preparing project structure"
