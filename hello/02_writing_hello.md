@@ -34,11 +34,11 @@ Great! One of the files for the new microservice is already done, only couple mo
 
 Create following files in proper locations that are described on top of every file.
 
-### /root/scenario/project/hello-jlupin/additional-files/servlet-configuration.yml
+### /root/scenario/project/hello-jlupin/additional-files/servlet_configuration.yml
 
 This is the default servlet configuration without any changes to default values. Full description and meaning of each field is available [here](https://jlupin.io/documentation/jlupin-platform-161/page/architecture-microservice-servlet_configuration_yml.html)
 
-<pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/servlet-configuration.yml" data-target="replace">
+<pre class="file" data-filename="/root/scenario/project/hello-jlupin/additional-files/servlet_configuration.yml" data-target="replace">
 SERVERS:
   HTTP:
     type: spring_boot
@@ -220,7 +220,7 @@ The following files implement a basic `hello-world` type of service, that once d
 <pre class="file" data-filename="/root/scenario/project/hello-jlupin/implementation/src/main/java/com/example/SpringBootApplicationStarter.java" data-target="replace">
 package com.example;
 
-import com.example.configuration.HelloWorldSpringConfiguration;
+import com.example.configuration.HelloJlupinSpringConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
